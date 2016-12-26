@@ -43,8 +43,8 @@ class FilterRecipeCards extends Component {
 	}
 }
 
-FilterRecipeCards = withRouter(connect((state, { params }) => {
-	const filter = params.filter || 'all';
+FilterRecipeCards = withRouter(connect((state, router) => {
+	const filter = router.location.query.filter || 'all';
 	return {
 		recipes: getVisibleRecipes(state, filter),
 		isFetching: getIsFetching(state, filter),

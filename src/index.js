@@ -16,10 +16,8 @@ render(
 		<Router history={history} render={applyRouterMiddleware(useScroll())}>
 			<Route path="/" component={App}>
 				<IndexRoute component={Collection} />
-				<Redirect from="recipes" to="all" />
-				<Route path="(:filter)" component={Collection} />
-				<Route path="recipes/:id" component={Recipe} />
-				<Route path="recipes/:id/edit" component={RecipeEdit} />
+				<Route path="/:id" component={Recipe} />
+				<Route path="/:id/edit" component={RecipeEdit} />
 			</Route>
 		</Router>
 	</Provider>,

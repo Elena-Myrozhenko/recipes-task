@@ -113,10 +113,10 @@ class Recipe extends Component {
 							<em>{moment.unix(timestamp).fromNow()}</em>
 						</Menu.Item>
 						<Menu.Menu className="right">
-							<Link to={'/recipes'} className="item">
+							<Link to="/" className="item">
 								<Icon name="home" />Home
 							</Link>
-							<Link to={'/recipes/' + id + '/edit'} className="item">
+							<Link to={id + '/edit'} className="item">
 								<Icon name="write" />Edit
 							</Link>
 						</Menu.Menu>
