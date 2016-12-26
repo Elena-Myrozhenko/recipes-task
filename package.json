@@ -1,6 +1,7 @@
 {
   "name": "Recipes",
   "version": "0.1.0",
+  "homepage": "https://volodymyr-kushnir.github.io/recipes/",
   "private": true,
   "devDependencies": {
     "react-scripts": "0.8.4",
