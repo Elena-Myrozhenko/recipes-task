@@ -96,10 +96,10 @@ class Recipe extends Component {
 						</Form.Group>
 						<Divider />
 						<Menu text stackable>
-							<Link to={id} className="item">
+							<Link to={'/recipes/' + id} className="item">
 								<Icon name="remove" />Cancel
 							</Link>
-							<Link to="/" className="item" style={{ color: 'red' }} onClick={deleteRecipe.bind(null, id)}>
+							<Link to="/recipes/" className="item" style={{ color: 'red' }} onClick={deleteRecipe.bind(null, id)}>
 								<Icon name="trash outline" />Delete recipe
 							</Link>
 							<Menu.Item position="right" className="menu">
