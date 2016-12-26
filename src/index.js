@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
-import { Router, Route, IndexRoute, Redirect, applyRouterMiddleware, browserHistory } from 'react-router';
+import { Router, Route, IndexRoute, applyRouterMiddleware, browserHistory } from 'react-router';
 import { useScroll } from 'react-router-scroll';
 import { syncHistoryWithStore } from 'react-router-redux';
 import store from './stores';
