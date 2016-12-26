@@ -14,10 +14,10 @@ const history = syncHistoryWithStore(browserHistory, store);
 render(
 	<Provider store={store}>
 		<Router history={history} render={applyRouterMiddleware(useScroll())}>
-			<Route path="/" component={App}>
+			<Route path="/recipes/" component={App}>
 				<IndexRoute component={Collection} />
-				<Route path="/:id" component={Recipe} />
-				<Route path="/:id/edit" component={RecipeEdit} />
+				<Route path="/recipes/:id" component={Recipe} />
+				<Route path="/recipes/:id/edit" component={RecipeEdit} />
 			</Route>
 		</Router>
 	</Provider>,

@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 
 const NavFilterLink = ({ filter, children }) => (
-	<Link to={'?filter=' + filter} activeClassName="active" className="item">
+	<Link to={'/recipes/?filter=' + filter} activeClassName="active" className="item">
 		{children}
 	</Link>
 );
