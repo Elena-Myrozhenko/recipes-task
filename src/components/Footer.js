@@ -13,7 +13,7 @@ const Footer = () => (
 					</Grid.Column>
 					<Grid.Column>
 						<Segment basic inverted className="void">
-							&mdash; Hi! This is my homework, it's built with <strong>React + Redux</strong>. Source code is available at <Icon name="github" /><a href="#"><strong>volodymyr-kushnir/repo</strong></a>.
+							&mdash; Hi! This is my homework, it's built with <strong>React + Redux</strong>. Source code is available at <Icon name="github" /><a href="https://github.com/volodymyr-kushnir/recipes"><strong>https://github.com/volodymyr-kushnir/recipes</strong></a>.
 						</Segment>
 					</Grid.Column>
 				</Grid.Row>
