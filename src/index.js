@@ -5,6 +5,7 @@ import { Router, Route, IndexRoute, applyRouterMiddleware, browserHistory } from
 import { useScroll } from 'react-router-scroll';
 import { syncHistoryWithStore } from 'react-router-redux';
 import store from './stores';
+
 import App from './components/App';
 import Collection from './components/Collection';
 import Recipe from './containers/Recipe';
@@ -14,7 +15,7 @@ const history = syncHistoryWithStore(browserHistory, store);
 render(
 	<Provider store={store}>
 		<Router history={history} render={applyRouterMiddleware(useScroll())}>
-			<Route path="/recipes/" component={App}>
+			<Route path="/recipes" component={App}>
 				<IndexRoute component={Collection} />
 				<Route path="/recipes/:id" component={Recipe} />
 				<Route path="/recipes/:id/edit" component={RecipeEdit} />
