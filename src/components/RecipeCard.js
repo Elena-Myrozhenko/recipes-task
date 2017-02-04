@@ -38,7 +38,7 @@ const RecipeCard = ({ onStarClick, onCutleryClick, onTagClick, id, title, descri
 			{
 				video
 				?	<Popup trigger={
-						<Link to={'/recipes/' + id} className="left floated">
+						<Link to={'/' + id} className="left floated">
 							<Icon name="video" />
 						</Link>
 					} positioning="top center" inverted size="tiny">
@@ -54,13 +54,13 @@ const RecipeCard = ({ onStarClick, onCutleryClick, onTagClick, id, title, descri
 		</Card.Content>
 		{
 			photo
-			?	<Link to={'/recipes/' + id}>
+			?	<Link to={'/' + id}>
 					<Image src={photo} alt={title} fluid />
 				</Link>
 			:	null
 		}
 		<Card.Content>
-			<Link to={'/recipes/' + id} className="header" style={{ fontWeight: '900' }}>
+			<Link to={'/' + id} className="header" style={{ fontWeight: '900' }}>
 				{title}
 			</Link>
 			<Card.Meta>
