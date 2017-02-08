@@ -1,3 +1,21 @@
+# Recipes
+
+Interview task for **[Front-end](http://english.stackexchange.com/questions/34447/is-it-front-end-frontend-or-front-end) JavaScript Developer position** at [**Binary Studio**](https://binary-studio.com/).
+
+## Reference
+
+The task is small, but it is important to treat it seriously and supply a production quality code. If you’re uncertain about any details of the project, feel free to render your own decisions – make your software opinionated.
+
+Write a simple cookbook application in JavaScript. The application is basically a list of recipes which are sorted by date of their creation. Required features:
+- display list of recipes (date created, description)
+- add new recipe
+- modify existing recipe
+- view all previous recipe versions
+Client-side must be written utilizing **React** + **Redux** libraries. Server-side can be programmed in Node.js or you can also write the application using client-side storage (e.g. localStorage, IndexedDB, etc.). Server-side should provide minimum CRUD functionality to be used by client-side.
+Pay special attention to markup of the page. Layout should be of production quality and look nice on mobile devices.
+
+## Bootstrap
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
