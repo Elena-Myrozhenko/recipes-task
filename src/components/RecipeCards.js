@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Segment, Grid } from 'semantic-ui-react';
 import classnames from 'classnames';
 import RecipeCard from './RecipeCard';

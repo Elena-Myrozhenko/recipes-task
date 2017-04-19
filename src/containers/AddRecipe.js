@@ -58,8 +58,8 @@ class AddRecipe extends Component {
 						</Form.Group>
 						<Divider />
 						<Form.Group widths="equal">
-							<Form.Field name="photo" control={Input} type="text" icon="photo" iconPosition="left" placeholder="e.g. http://rcps.com/photos/577d247f.jpg" />
-							<Form.Field name="video" control={Input} type="text" icon="video" iconPosition="left" placeholder="e.g. http://rcps.com/videos/4f2c1eb1.mp4" />
+							<Form.Field name="photo" control={Input} type="text" icon="photo" iconPosition="left" placeholder="e.g. https://rcps.com/photos/577d247f.jpg" />
+							<Form.Field name="video" control={Input} type="text" icon="video" iconPosition="left" placeholder="e.g. https://rcps.com/videos/4f2c1eb1.mp4" />
 						</Form.Group>
 						<Form.Field name="tags" control={Dropdown} type="text" icon="dropdown" placeholder="e.g. #tomatoes #bake #15min" fluid multiple search scrolling selection allowAdditions noResultsMessage="Type new #hashtag and press Enter or use Space to create tags automatically." options={tagsOptions} value={tags} onAddItem={this.handleTagsAddition} onChange={this.handleTagsChange} onKeyDown={this.handleTagsKeyDown} />
 					</Segment>

@@ -70,7 +70,7 @@ const quotes = [{
 	author: 'Liz Lemon',
 	origin: '30 Rock'
 }];
-const quote = quotes[Math.floor(Math.random() * quotes.length)]; /* http://xkcd.com/221/ */
+const quote = quotes[Math.floor(Math.random() * quotes.length)]; /* https://xkcd.com/221/ */
 
 const Quote = () => (
 	<Header size="huge" textAlign="center">

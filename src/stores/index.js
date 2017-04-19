@@ -1,5 +1,5 @@
 import { createStore, applyMiddleware, compose } from 'redux';
-import createLogger from 'redux-logger';
+import { createLogger } from 'redux-logger';
 import createSagaMiddleware from 'redux-saga';
 import thunk from 'redux-thunk';
 
@@ -12,9 +12,11 @@ const configuredStore = createStore(
 	recipes,
 	composeEnhancers(
 		applyMiddleware(...[
-			sagaMiddleware,
 			thunk,
-			createLogger()
+			sagaMiddleware,
+			createLogger({
+				collapsed: true
+			})
 		])
 	)
 );

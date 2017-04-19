@@ -1,4 +1,4 @@
-import { v4 } from 'node-uuid';
+import uuid from 'uuid';
 import moment from 'moment';
 import fakeRecipes from './fakeRecipes';
 import { loadFromLocalStorage, saveToLocalStorage } from './localStorage';
@@ -39,7 +39,7 @@ export const addRecipe = (id, rawRecipe) =>
 		if (!id) {
 			const recipe = {
 				...rawRecipe,
-				id: v4(),
+				id: uuid.v4(),
 				cooked: false,
 				favorite: false,
 				timestamp: moment().unix(),

@@ -1,14 +1,14 @@
-import { v4 } from 'node-uuid';
+import uuid from 'uuid';
 import moment from 'moment';
 
 const generateUnixTimestamp = () => moment().unix() - Math.floor(Math.random() * 10 * 60);
 
 const fakeRecipes = [{
-	id: v4(),
+	id: uuid.v4(),
 	title: 'Spinach Quiche',
 	description: 'A classic quiche made fragrant by the nutty, warm flavor of the Kerrygold Dubliner cheese. Buttery caramelized shallots, garlic, and oregano round out the flavor.',
-	photo: 'http://assets.epicurious.com/photos/5820e0231303f5b965361d44/6:4/w_620%2Ch_413/16_Kerrygold_Quiche_Header.jpg',
-	video: 'http://dp8hsntg6do36.cloudfront.net/582b525dfd2e61100600000f/2239793f-76ad-40b8-97b6-6d15d54379dahigh.webm',
+	photo: 'https://assets.epicurious.com/photos/5820e0231303f5b965361d44/6:4/w_620%2Ch_413/16_Kerrygold_Quiche_Header.jpg',
+	video: 'https://dp8hsntg6do36.cloudfront.net/582b525dfd2e61100600000f/2239793f-76ad-40b8-97b6-6d15d54379dahigh.webm',
 	ingredients: [
 		'Homemade pastry dough or frozen 9-inch pie shell',
 		'2 tablespoons Kerrygold salted butter',
@@ -40,11 +40,11 @@ const fakeRecipes = [{
 	timestamp: generateUnixTimestamp(),
 	versions: []
 }, {
-	id: v4(),
+	id: uuid.v4(),
 	title: 'Shepherd’s Pie',
 	description: 'Buttery shepherd’s pie brimming with meat, vegetables, and herbs. Tomato paste and Worcestershire sauce give the filling a bright, tangy finish.',
-	photo: 'http://assets.epicurious.com/photos/5820e0fc9de3520d2eb00201/6:4/w_620%2Ch_413/16_Kerrygold_ShepherdsPie_Header.jpg',
-	video: 'http://dp8hsntg6do36.cloudfront.net/582b5595fd2e61100600001d/36e6038b-9ebb-422d-a808-c78954c73f8bhigh.webm',
+	photo: 'https://assets.epicurious.com/photos/5820e0fc9de3520d2eb00201/6:4/w_620%2Ch_413/16_Kerrygold_ShepherdsPie_Header.jpg',
+	video: 'https://dp8hsntg6do36.cloudfront.net/582b5595fd2e61100600001d/36e6038b-9ebb-422d-a808-c78954c73f8bhigh.webm',
 	ingredients: [
 		'10 tablespoons Kerrygold salted butter, (1¼ sticks)',
 		'1 large onion, diced',
@@ -78,10 +78,10 @@ const fakeRecipes = [{
 	timestamp: generateUnixTimestamp(),
 	versions: []
 }, {
-	id: v4(),
+	id: uuid.v4(),
 	title: 'Bosc Pear Salad',
 	description: 'A satisfying salad that’s rich and crunchy. The bitter radicchio and walnuts are balanced by the delicate sweetness of pears and cranberries and the full-flavored Kerrygold Dubliner cheese.',
-	photo: 'http://assets.epicurious.com/photos/5820cc9b1303f5b965361d41/6:4/w_620%2Ch_413/16_Kerrygold_Salad_Header.jpg',
+	photo: 'https://assets.epicurious.com/photos/5820cc9b1303f5b965361d41/6:4/w_620%2Ch_413/16_Kerrygold_Salad_Header.jpg',
 	video: undefined,
 	ingredients: [
 		'1½ tablespoons dijon mustard',
@@ -111,10 +111,10 @@ const fakeRecipes = [{
 	timestamp: generateUnixTimestamp(),
 	versions: []
 }, {
-	id: v4(),
+	id: uuid.v4(),
 	title: 'Arugula And Roasted Pear Salad',
 	description: 'Arugula and pears flourish during the cooler late-autumn weather. Put them together for a great balance of sweet and piquant. The arugula is lightly dressed with a maple-sweetened vinaigrette to accentuate the natural flavor of the pears.',
-	photo: 'http://assets.epicurious.com/photos/57ced51d3c3d8c346d0ada38/6:4/w_620%2Ch_413/arugula-and-roasted-pear-salad.jpg',
+	photo: 'https://assets.epicurious.com/photos/57ced51d3c3d8c346d0ada38/6:4/w_620%2Ch_413/arugula-and-roasted-pear-salad.jpg',
 	video: undefined,
 	ingredients: [
 		'4 firm, almost-ripe pears (Bartlett or Bosc), peeled, cored, and cut lengthwise',
@@ -149,10 +149,10 @@ const fakeRecipes = [{
 	timestamp: generateUnixTimestamp(),
 	versions: []
 }, {
-	id: v4(),
+	id: uuid.v4(),
 	title: 'Salted Black Licorice Caramels',
 	description: 'People who love black licorice will flip for these assertively flavored candies. They’ll be not-quite-black without the food coloring but still very cool looking.',
-	photo: 'http://assets.epicurious.com/photos/58486ca5c57348020906be40/6:4/w_620%2Ch_413/salted-black-licorice-caramels-120716.jpg',
+	photo: 'https://assets.epicurious.com/photos/58486ca5c57348020906be40/6:4/w_620%2Ch_413/salted-black-licorice-caramels-120716.jpg',
 	video: undefined,
 	ingredients: [
 		'Nonstick vegetable oil spray',
@@ -180,10 +180,10 @@ const fakeRecipes = [{
 	timestamp: generateUnixTimestamp(),
 	versions: []
 }, {
-	id: v4(),
+	id: uuid.v4(),
 	title: 'Nutella–Brown Butter Crispies',
 	description: 'For a smaller batch and an easier time mixing the cereal, divide the recipe in half (but use an 8x8" pan).',
-	photo: 'http://assets.epicurious.com/photos/58515d8c5113f6cc02f59c1c/6:4/w_620%2Ch_413/nutella-brown-butter-crispies-120716.jpg',
+	photo: 'https://assets.epicurious.com/photos/58515d8c5113f6cc02f59c1c/6:4/w_620%2Ch_413/nutella-brown-butter-crispies-120716.jpg',
 	video: undefined,
 	ingredients: [
 		'¾ cup (1½ sticks) unsalted butter, plus more for pan',
@@ -212,10 +212,10 @@ const fakeRecipes = [{
 	timestamp: generateUnixTimestamp(),
 	versions: []
 }, {
-	id: v4(),
+	id: uuid.v4(),
 	title: 'Golden Potato Cake',
 	description: 'It’s not about the potatoes—it’s what you do to the potatoes. In this recipe, precook them until they’re tender, then dispatch clarified butter (which is less likely to burn), heat, and time to help them become their best selves.',
-	photo: 'http://assets.epicurious.com/photos/58486ca0bbf20a4f3a3e5606/6:4/w_620%2Ch_413/golden-potato-cake-120716.jpg',
+	photo: 'https://assets.epicurious.com/photos/58486ca0bbf20a4f3a3e5606/6:4/w_620%2Ch_413/golden-potato-cake-120716.jpg',
 	video: undefined,
 	ingredients: [
 		'8 tablespoons unsalted butter or 6 tablespoons ghee',
@@ -241,10 +241,10 @@ const fakeRecipes = [{
 	timestamp: generateUnixTimestamp(),
 	versions: []
 }, {
-	id: v4(),
+	id: uuid.v4(),
 	title: 'Shallot Tarte Tatin',
 	description: 'To make this recipe ahead, let the tart cool in pan, then reheat over medium to soften glaze before inverting.',
-	photo: 'http://assets.epicurious.com/photos/58486ca5c57348020906be41/6:4/w_620%2Ch_413/shallot-tarte-tatin-120716.jpg',
+	photo: 'https://assets.epicurious.com/photos/58486ca5c57348020906be41/6:4/w_620%2Ch_413/shallot-tarte-tatin-120716.jpg',
 	video: undefined,
 	ingredients: [
 		'1 tablespoon pine nuts or chopped almonds',
@@ -281,10 +281,10 @@ const fakeRecipes = [{
 	timestamp: generateUnixTimestamp(),
 	versions: []
 }, {
-	id: v4(),
+	id: uuid.v4(),
 	title: 'Broiled Cod With Fennel And Orange',
 	description: 'A zesty-flavored mayonnaise spread is the secret to this super-tender flavorful fish, and the glue that holds the almond crust in place. Add white beans, broccolini, fennel, and slices of orange for a quick sheet-pan dinner that cooks under the broiler in just 6 minutes.',
-	photo: 'http://assets.epicurious.com/photos/58471ec8874f18911e1de0c5/6:4/w_620%2Ch_413/Broiled-Cod-With-Fennel-and-Orange-05122016.jpg',
+	photo: 'https://assets.epicurious.com/photos/58471ec8874f18911e1de0c5/6:4/w_620%2Ch_413/Broiled-Cod-With-Fennel-and-Orange-05122016.jpg',
 	video: undefined,
 	ingredients: [
 		'¼ cup mayonnaise',
@@ -318,10 +318,10 @@ const fakeRecipes = [{
 	timestamp: generateUnixTimestamp(),
 	versions: []
 }, {
-	id: v4(),
+	id: uuid.v4(),
 	title: 'Cider-Brined, Mustard-Glazed Pork Loin',
 	description: 'Try this fresh alternative to holiday ham for your next festive gathering or Sunday supper. With an apple cider brine and maple-mustard glaze, this pork loin has all the flavors of a classic ham wrapped in more a tender and juicy package. Start early—the brine takes 8–24 hours.',
-	photo: 'http://assets.epicurious.com/photos/56d85a0bb4756f7440ec691c/6:4/w_620%2Ch_413/PORK_LOIN_128.jpg',
+	photo: 'https://assets.epicurious.com/photos/56d85a0bb4756f7440ec691c/6:4/w_620%2Ch_413/PORK_LOIN_128.jpg',
 	video: undefined,
 	ingredients: [
 		'1 cup kosher salt',
@@ -365,10 +365,10 @@ const fakeRecipes = [{
 	timestamp: generateUnixTimestamp(),
 	versions: []
 }, {
-	id: v4(),
+	id: uuid.v4(),
 	title: 'Grain Bowl With Spiced Squash, Mushrooms, And Curried Yogurt',
 	description: 'No squash? No problem. This rice bowl—which was developed for our #cook90 initiative—can handle all sorts of roasted vegetables (and, for that matter, can be made with all kinds of grains). But the curried yogurt? That\'s crucial.',
-	photo: 'http://assets.epicurious.com/photos/58518af58105d5fb5ca89ca4/6:4/w_620%2Ch_413/cook-90-Grain-Bowl-with-Spiced-Squash-Mushrooms-and-Curried-Yogurt-recipe-08121016.jpg',
+	photo: 'https://assets.epicurious.com/photos/58518af58105d5fb5ca89ca4/6:4/w_620%2Ch_413/cook-90-Grain-Bowl-with-Spiced-Squash-Mushrooms-and-Curried-Yogurt-recipe-08121016.jpg',
 	video: undefined,
 	ingredients: [
 		'½ cup red, white, or brown rice, quinoa, or barley',
@@ -402,10 +402,10 @@ const fakeRecipes = [{
 	timestamp: generateUnixTimestamp(),
 	versions: []
 }, {
-	id: v4(),
+	id: uuid.v4(),
 	title: 'Mexican-Style Spicy Sweet Potato And Chicken Bowl',
 	description: 'A one-pot evening meal with minimum fuss and maximum taste.',
-	photo: 'http://assets.epicurious.com/photos/584abfa7024ba92504957ccd/6:4/w_620%2Ch_413/mexican-style-sweet-potato-chicken-bowl-hc-120816.jpg',
+	photo: 'https://assets.epicurious.com/photos/584abfa7024ba92504957ccd/6:4/w_620%2Ch_413/mexican-style-sweet-potato-chicken-bowl-hc-120816.jpg',
 	video: undefined,
 	ingredients: [
 		'2 sweet potatoes, peeled and chopped into chunks',
@@ -440,10 +440,10 @@ const fakeRecipes = [{
 	timestamp: generateUnixTimestamp(),
 	versions: []
 }, {
-	id: v4(),
+	id: uuid.v4(),
 	title: 'Poached Cod With Potatoes And Leeks',
 	description: 'Gently poaching fillets of delicate white fish in milk is the secret to an elegant yet effortless dinner.',
-	photo: 'http://assets.epicurious.com/photos/580549d79bb3c66e1f64bc44/6:4/w_620%2Ch_413/poached-cod-potatoes-and-leeks-BA-101416.jpg',
+	photo: 'https://assets.epicurious.com/photos/580549d79bb3c66e1f64bc44/6:4/w_620%2Ch_413/poached-cod-potatoes-and-leeks-BA-101416.jpg',
 	video: undefined,
 	ingredients: [
 		'1½ pounds small Yukon Gold potatoes',
@@ -472,10 +472,10 @@ const fakeRecipes = [{
 	timestamp: generateUnixTimestamp(),
 	versions: []
 }, {
-	id: v4(),
+	id: uuid.v4(),
 	title: 'Millet "Burrito" Bowl',
 	description: 'The millet is hearty and filling, and the beans provide a good amount of protein and fiber. Arugula and radishes in this mix lighten it up a bit and give good crunch. The dressing is bright and tangy, with lots of lime and toasted cumin.',
-	photo: 'http://assets.epicurious.com/photos/57ed6cda157db2af0703b188/6:4/w_620%2Ch_413/Millet-Burrito-Bowl092916.jpg',
+	photo: 'https://assets.epicurious.com/photos/57ed6cda157db2af0703b188/6:4/w_620%2Ch_413/Millet-Burrito-Bowl092916.jpg',
 	video: undefined,
 	ingredients: [
 		'Kosher salt',
@@ -512,10 +512,10 @@ const fakeRecipes = [{
 	timestamp: generateUnixTimestamp(),
 	versions: []
 }, {
-	id: v4(),
+	id: uuid.v4(),
 	title: 'Shaved Cauliflower Salad',
 	description: 'Thinly sliced raw cauliflower takes center stage in this salad, tossed in a bright, limey dressing and dusted with nutritional yeast.',
-	photo: 'http://assets.epicurious.com/photos/57d1f0b2b96ba7195757bfab/6:4/w_620%2Ch_413/shaved-cauliflower-salad-BA-090816.jpg',
+	photo: 'https://assets.epicurious.com/photos/57d1f0b2b96ba7195757bfab/6:4/w_620%2Ch_413/shaved-cauliflower-salad-BA-090816.jpg',
 	video: undefined,
 	ingredients: [
 		'1 teaspoon finely grated lime zest',

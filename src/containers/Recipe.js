@@ -75,9 +75,9 @@ class Recipe extends Component {
 						<Menu.Item>
 							<Popup trigger={
 								<a style={{ color: favorite ? '#FFB70A' : 'grey' }} onClick={() => toggleFavorite(id)}>
-									<Icon name="star" />
+									<Icon name="star" fitted />
 								</a>
-							} positioning="top center" inverted size="tiny">
+							} position="top center" inverted size="tiny">
 								<Popup.Content>
 									Make this recipe your favorite
 								</Popup.Content>
@@ -86,9 +86,9 @@ class Recipe extends Component {
 						<Menu.Item>
 							<Popup trigger={
 								<a style={{ color: cooked ? 'black' : 'grey' }} onClick={() => toggleCooked(id)}>
-									<Icon name="spoon" />
+									<Icon name="spoon" fitted />
 								</a>
-							} positioning="top center" inverted size="tiny">
+							} position="top center" inverted size="tiny">
 								<Popup.Content>
 									Mark this recipe as cooked
 								</Popup.Content>
@@ -101,7 +101,7 @@ class Recipe extends Component {
 										<a className="left floated" style={{ fontWeight: '800' }}>
 											&times;{versions.length + 1}
 										</a>
-									} positioning="top center" inverted size="tiny">
+									} position="top center" inverted size="tiny">
 										<Popup.Content>
 											This recipe has {versions.length + 1} version{versions.length + 1 > 1 ? 's' : ''}
 										</Popup.Content>

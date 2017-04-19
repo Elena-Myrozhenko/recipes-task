@@ -1,8 +1,7 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
-import { Router, Route, IndexRoute, applyRouterMiddleware, hashHistory } from 'react-router';
-import { useScroll } from 'react-router-scroll';
+import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 import store from './stores';
 
@@ -14,7 +13,7 @@ import RecipeEdit from './containers/RecipeEdit';
 const history = syncHistoryWithStore(hashHistory, store);
 render(
 	<Provider store={store}>
-		<Router history={history} render={applyRouterMiddleware(useScroll())}>
+		<Router history={history}>
 			<Route path="/" component={App}>
 				<IndexRoute component={Collection} />
 				<Route path="/:id" component={Recipe} />

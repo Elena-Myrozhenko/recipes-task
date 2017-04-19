@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { withRouter, Link } from 'react-router';
 import * as actions from '../actions';
 import { getRecipe } from '../reducers';
-import { Segment, Icon, Embed, Image, Divider, Form, Input, Dropdown, Menu, Button } from 'semantic-ui-react';
+import { Segment, Icon, Embed, Image, Form, Input, Dropdown, Menu, Button } from 'semantic-ui-react';
 
 class Recipe extends Component {
 	fetchData() {
@@ -86,15 +86,13 @@ class Recipe extends Component {
 						<Form.TextArea name="description" placeholder="e.g. Basil is a mere garnish in this nutty, cheesy, peak-season pesto sauce." rows="3" defaultValue={description} />
 						<Form.Field name="tags" control={Dropdown} type="text" icon="dropdown" placeholder="e.g. #tomatoes #bake #15min" fluid multiple search scrolling selection allowAdditions noResultsMessage="Type new #hashtag and press Enter or use Space to automagically create tags as you type." options={tagsOptions} value={tagsNew} onAddItem={this.handleTagsAddition} onChange={this.handleTagsChange} onKeyDown={this.handleTagsKeyDown} />
 						<Form.Group widths="equal">
-							<Form.Field name="photo" control={Input} type="text" icon="photo" iconPosition="left" placeholder="e.g. http://rcps.com/photos/577d247f.jpg" defaultValue={photo} />
-							<Form.Field name="video" control={Input} type="text" icon="video" iconPosition="left" placeholder="e.g. http://rcps.com/videos/4f2c1eb1.mp4" defaultValue={video} />
+							<Form.Field name="photo" control={Input} type="text" icon="photo" iconPosition="left" placeholder="e.g. https://rcps.com/photos/577d247f.jpg" defaultValue={photo} />
+							<Form.Field name="video" control={Input} type="text" icon="video" iconPosition="left" placeholder="e.g. https://rcps.com/videos/4f2c1eb1.mp4" defaultValue={video} />
 						</Form.Group>
-						<Divider />
 						<Form.Group widths="equal">
 							<Form.TextArea name="ingredients" label="Ingredients" placeholder="e.g. 3 tablespoons olive oil..." rows="6" defaultValue={ingredients.join('\n')} />
 							<Form.TextArea name="directions" label="Directions" placeholder="e.g. Preheat oven to 400°F..." rows="6" defaultValue={directions.join('\n\n')} />
 						</Form.Group>
-						<Divider />
 						<Menu text stackable>
 							<Link to={'/' + id} className="item">
 								<Icon name="remove" />Cancel
@@ -104,7 +102,7 @@ class Recipe extends Component {
 							</Link>
 							<Menu.Item position="right" className="menu">
 								<Button type="submit" basic fluid>
-									<Icon name="write" />Save as new version
+									<Icon name="save" />Save as new version
 								</Button>
 							</Menu.Item>
 						</Menu>

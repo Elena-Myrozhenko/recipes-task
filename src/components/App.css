@@ -2,6 +2,7 @@
  * Semantic UI bugfixes.
  * Most of them are already in the master, not yet released though.
  */
+.ui.popup { padding: 0.35em 0.7em; }
 .ui.fluid.container { margin: 0 !important; }
 .ui.huge.header { font-size: 4em; font-weight: 200; }
 .ui.text.menu { flex-wrap: wrap; justify-content: center; }

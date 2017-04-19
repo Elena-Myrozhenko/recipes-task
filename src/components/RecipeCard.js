@@ -1,53 +1,55 @@
 import moment from 'moment';
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router';
 import { Card, Divider, Popup, Image, Icon, List, Accordion } from 'semantic-ui-react';
 
 const RecipeCard = ({ onStarClick, onCutleryClick, onTagClick, id, title, description, photo, video, ingredients, directions, tags, cooked, favorite, timestamp, versions }) => (
 	<Card fluid>
 		<Card.Content extra>
-			<span className="left floated favorite">
-				<Popup trigger={<Icon name="star" style={{ color: favorite ? '#FFB70A' : 'inherit' }} onClick={onStarClick} />} positioning="top center" inverted size="tiny">
+			<span className="left floated">
+				<Popup trigger={<Icon name="star" fitted style={{ color: favorite ? '#FFB70A' : 'inherit' }} onClick={onStarClick} />} position="top center" inverted size="tiny">
 					<Popup.Content>
 						Make this recipe your favorite
 					</Popup.Content>
 				</Popup>
+				&nbsp;
+				<Popup trigger={
+					<Icon name="spoon" fitted style={{ color: cooked ? 'black' : 'inherit' }} onClick={onCutleryClick} />
+				} position="top center" inverted size="tiny">
+					<Popup.Content>
+						Mark this recipe as cooked
+					</Popup.Content>
+				</Popup>
+				&nbsp;
+				{
+					versions.length > 0
+					?	<Popup trigger={
+							<a style={{ fontWeight: '800' }}>
+								&times;{versions.length + 1}
+							</a>
+						} position="top center" inverted size="tiny">
+							<Popup.Content>
+								This recipe has {versions.length + 1} version{versions.length + 1 > 1 ? 's' : ''}
+							</Popup.Content>
+						</Popup>
+					:	null
+				}
+				&nbsp;
+				{
+					video
+					?	<Popup trigger={
+							<Link to={'/' + id}>
+								<Icon name="video" fitted />
+							</Link>
+						} position="top center" inverted size="tiny">
+							<Popup.Content>
+								Wow, video in this recipe! Much amaze!
+							</Popup.Content>
+						</Popup>
+					:	null
+				}
 			</span>
-			<Popup trigger={
-				<a className="left floated" style={{ color: cooked ? 'black' : 'inherit' }} onClick={onCutleryClick}>
-					<Icon name="spoon" />
-				</a>
-			} positioning="top center" inverted size="tiny">
-				<Popup.Content>
-					Mark this recipe as cooked
-				</Popup.Content>
-			</Popup>
-			{
-				versions.length > 0
-				?	<Popup trigger={
-						<a className="left floated" style={{ fontWeight: '800' }}>
-							&times;{versions.length + 1}
-						</a>
-					} positioning="top center" inverted size="tiny">
-						<Popup.Content>
-							This recipe has {versions.length + 1} version{versions.length + 1 > 1 ? 's' : ''}
-						</Popup.Content>
-					</Popup>
-				:	null
-			}
-			{
-				video
-				?	<Popup trigger={
-						<Link to={'/' + id} className="left floated">
-							<Icon name="video" />
-						</Link>
-					} positioning="top center" inverted size="tiny">
-						<Popup.Content>
-							Wow, video in this recipe! Much amaze!
-						</Popup.Content>
-					</Popup>
-				:	null
-			}
 			<span className="right floated">
 				{moment.unix(timestamp).fromNow()}
 			</span>
