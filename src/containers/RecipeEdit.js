@@ -1,10 +1,11 @@
 import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { withRouter, Link } from 'react-router';
+import { withRouter } from 'react-router';
+import { Link } from 'react-router-dom';
 import * as actions from '../actions';
 import { getRecipe } from '../reducers';
-import { Segment, Icon, Embed, Image, Form, Input, Dropdown, Menu, Button } from 'semantic-ui-react';
+import { Container, Segment, Icon, Embed, Image, Form, Input, Dropdown, Menu, Button } from 'semantic-ui-react';
 
 class Recipe extends Component {
 	fetchData() {
@@ -74,47 +75,49 @@ class Recipe extends Component {
 		const { title, description, photo, video, ingredients, directions } = recipe;
 		const { tagsNew, tagsOptions } = this.state;
 		return (
-			<Segment basic padded>
-				{
-					video
-					?	<Embed url={video} placeholder={photo} />
-					:	<Image src={photo} shape="rounded" centered fluid alt={title} />
-				}
-				<Segment basic vertical>
-					<Form onSubmit={this.handleSubmit}>
-						<Form.Field name="title" size="huge" style={{ fontWeight: 900 }} control={Input} type="text" placeholder="e.g. Spaghetti With Tomato And Walnut Pesto" defaultValue={title} />
-						<Form.TextArea name="description" placeholder="e.g. Basil is a mere garnish in this nutty, cheesy, peak-season pesto sauce." rows="3" defaultValue={description} />
-						<Form.Field name="tags" control={Dropdown} type="text" icon="dropdown" placeholder="e.g. #tomatoes #bake #15min" fluid multiple search scrolling selection allowAdditions noResultsMessage="Type new #hashtag and press Enter or use Space to automagically create tags as you type." options={tagsOptions} value={tagsNew} onAddItem={this.handleTagsAddition} onChange={this.handleTagsChange} onKeyDown={this.handleTagsKeyDown} />
-						<Form.Group widths="equal">
-							<Form.Field name="photo" control={Input} type="text" icon="photo" iconPosition="left" placeholder="e.g. https://rcps.com/photos/577d247f.jpg" defaultValue={photo} />
-							<Form.Field name="video" control={Input} type="text" icon="video" iconPosition="left" placeholder="e.g. https://rcps.com/videos/4f2c1eb1.mp4" defaultValue={video} />
-						</Form.Group>
-						<Form.Group widths="equal">
-							<Form.TextArea name="ingredients" label="Ingredients" placeholder="e.g. 3 tablespoons olive oil..." rows="6" defaultValue={ingredients.join('\n')} />
-							<Form.TextArea name="directions" label="Directions" placeholder="e.g. Preheat oven to 400°F..." rows="6" defaultValue={directions.join('\n\n')} />
-						</Form.Group>
-						<Menu text stackable>
-							<Link to={'/' + id} className="item">
-								<Icon name="remove" />Cancel
-							</Link>
-							<Link to="/" className="item" style={{ color: 'red' }} onClick={deleteRecipe.bind(null, id)}>
-								<Icon name="trash outline" />Delete recipe
-							</Link>
-							<Menu.Item position="right" className="menu">
-								<Button type="submit" basic fluid>
-									<Icon name="save" />Save as new version
-								</Button>
-							</Menu.Item>
-						</Menu>
-					</Form>
+			<Container text>
+				<Segment basic padded>
+					{
+						video
+						?	<Embed url={video} placeholder={photo} />
+						:	<Image src={photo} shape="rounded" centered fluid alt={title} />
+					}
+					<Segment basic vertical>
+						<Form onSubmit={this.handleSubmit}>
+							<Form.Field name="title" size="huge" style={{ fontWeight: 900 }} control={Input} type="text" placeholder="e.g. Spaghetti With Tomato And Walnut Pesto" defaultValue={title} />
+							<Form.TextArea name="description" placeholder="e.g. Basil is a mere garnish in this nutty, cheesy, peak-season pesto sauce." rows="3" defaultValue={description} />
+							<Form.Field name="tags" control={Dropdown} type="text" icon="dropdown" placeholder="e.g. #tomatoes #bake #15min" fluid multiple search scrolling selection allowAdditions noResultsMessage="Type new #hashtag and press Enter or use Space to automagically create tags as you type." options={tagsOptions} value={tagsNew} onAddItem={this.handleTagsAddition} onChange={this.handleTagsChange} onKeyDown={this.handleTagsKeyDown} />
+							<Form.Group widths="equal">
+								<Form.Field name="photo" control={Input} type="text" icon="photo" iconPosition="left" placeholder="e.g. https://rcps.com/photos/577d247f.jpg" defaultValue={photo} />
+								<Form.Field name="video" control={Input} type="text" icon="video" iconPosition="left" placeholder="e.g. https://rcps.com/videos/4f2c1eb1.mp4" defaultValue={video} />
+							</Form.Group>
+							<Form.Group widths="equal">
+								<Form.TextArea name="ingredients" label="Ingredients" placeholder="e.g. 3 tablespoons olive oil..." rows="6" defaultValue={ingredients.join('\n')} />
+								<Form.TextArea name="directions" label="Directions" placeholder="e.g. Preheat oven to 400°F..." rows="6" defaultValue={directions.join('\n\n')} />
+							</Form.Group>
+							<Menu text stackable>
+								<Link to={'/' + id} className="item">
+									<Icon name="remove" />Cancel
+								</Link>
+								<Link to="/" className="item" style={{ color: 'red' }} onClick={deleteRecipe.bind(null, id)}>
+									<Icon name="trash outline" />Delete recipe
+								</Link>
+								<Menu.Item position="right" className="menu">
+									<Button type="submit" basic fluid>
+										<Icon name="save" />Save as new version
+									</Button>
+								</Menu.Item>
+							</Menu>
+						</Form>
+					</Segment>
 				</Segment>
-			</Segment>
+			</Container>
 		);
 	}
 }
 
-Recipe = withRouter(connect((state, { params }) => {
-	const { id } = params;
+Recipe = withRouter(connect((state, router) => {
+	const { id } = router.match.params;
 	return {
 		recipe: getRecipe(state, id),
 		id

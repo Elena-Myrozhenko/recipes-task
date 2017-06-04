@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
+import queryString from 'query-string';
 import * as actions from '../actions';
 import { getVisibleRecipes, getIsFetching, getErrorMessage } from '../reducers';
 import { Header } from 'semantic-ui-react';
@@ -28,7 +29,7 @@ class FilterRecipeCards extends Component {
 				style={{ fontWeight: 900, margin: '3em auto' }}>
 					&mdash; Can't fetch recipes because of "{errorMessage}".
 					<br />
-					<a href="#" onClick={(e) => { e.preventDefault(); this.fetchData(); }}>&mdash; Retry.</a>
+					<a style={{ cursor: 'pointer' }} onClick={(e) => { e.preventDefault(); this.fetchData(); }}>&mdash; Retry.</a>
 			</Header>;
 		}
 		if (!isFetching && !recipes.length) {
@@ -44,7 +45,7 @@ class FilterRecipeCards extends Component {
 }
 
 FilterRecipeCards = withRouter(connect((state, router) => {
-	const filter = router.location.query.filter || 'all';
+	const filter = queryString.parse(router.location.search).filter || 'all';
 	return {
 		recipes: getVisibleRecipes(state, filter),
 		isFetching: getIsFetching(state, filter),

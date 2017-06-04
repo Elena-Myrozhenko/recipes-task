@@ -1,25 +1,18 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
-import { Router, Route, IndexRoute, hashHistory } from 'react-router';
-import { syncHistoryWithStore } from 'react-router-redux';
+import { ConnectedRouter } from 'react-router-redux';
+import { Route } from 'react-router';
+import createHistory from 'history/createBrowserHistory';
 import store from './stores';
-
 import App from './components/App';
-import Collection from './components/Collection';
-import Recipe from './containers/Recipe';
-import RecipeEdit from './containers/RecipeEdit';
+export const history = createHistory();
 
-const history = syncHistoryWithStore(hashHistory, store);
 render(
 	<Provider store={store}>
-		<Router history={history}>
-			<Route path="/" component={App}>
-				<IndexRoute component={Collection} />
-				<Route path="/:id" component={Recipe} />
-				<Route path="/:id/edit" component={RecipeEdit} />
-			</Route>
-		</Router>
+		<ConnectedRouter history={history}>
+			<Route path="/" component={App} />
+		</ConnectedRouter>
 	</Provider>,
 	document.getElementById('root')
 );

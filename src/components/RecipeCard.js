@@ -1,7 +1,7 @@
 import moment from 'moment';
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import { Card, Divider, Popup, Image, Icon, List, Accordion } from 'semantic-ui-react';
 
 const RecipeCard = ({ onStarClick, onCutleryClick, onTagClick, id, title, description, photo, video, ingredients, directions, tags, cooked, favorite, timestamp, versions }) => (

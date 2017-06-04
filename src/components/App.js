@@ -1,14 +1,17 @@
 import React from 'react';
-import { Container } from 'semantic-ui-react';
+import { Route } from 'react-router';
+import Collection from './Collection';
+import Recipe from '../containers/Recipe';
+import RecipeEdit from '../containers/RecipeEdit';
 import Wiki from './Wiki';
 import Footer from './Footer';
 import './App.css';
 
-const App = ({ children, params }) => (
+const App = () => (
 	<div>
-		<Container text={params && !!params.id}>
-			{children}
-		</Container>
+		<Route path="/" exact component={Collection} />
+		<Route path="/:id" exact component={Recipe} />
+		<Route path="/:id/edit" exact component={RecipeEdit} />
 		<Wiki />
 		<Footer />
 	</div>

@@ -2,7 +2,7 @@ import { normalize } from 'normalizr';
 import * as schema from './schema';
 import * as api from '../api';
 import { getIsFetching } from '../reducers';
-import { browserHistory } from 'react-router';
+import { history } from '../index';
 
 export const fetchRecipes = (filter) => (dispatch, getState) => {
 	if (getIsFetching(getState(), filter)) {
@@ -58,7 +58,7 @@ export const addRecipe = (id, recipe) => (dispatch) => {
 			type: 'ADD_RECIPE_SUCCESS',
 			response: normalize(response, schema.recipe)
 		});
-		browserHistory.goBack();
+		history.goBack();
 	});
 }
 	

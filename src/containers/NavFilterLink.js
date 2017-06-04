@@ -1,10 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router';
+import { NavLink } from 'react-router-dom';
 
 const NavFilterLink = ({ filter, children }) => (
-	<Link to={'/?filter=' + filter} activeClassName="active" className="item">
+	<NavLink to={'/?filter=' + filter} activeClassName="active" className="item">
 		{children}
-	</Link>
+	</NavLink>
 );
 
 export default NavFilterLink;
