@@ -5,7 +5,7 @@ import { ConnectedRouter } from 'react-router-redux';
 import { Switch, Route } from 'react-router';
 import createHistory from 'history/createBrowserHistory';
 import store from './stores';
-import Collection from './components/Collection';
+import RecipeCards from './containers/RecipeCards/RecipeCards';
 import Recipe from './containers/Recipe';
 import RecipeEdit from './containers/RecipeEdit';
 import Wiki from './components/Wiki/Wiki';
@@ -19,7 +19,7 @@ render(
 		<ConnectedRouter history={history}>
 			<div>
 				<Switch>
-					<Route path="/" exact component={Collection} />
+					<Route path="/" exact component={RecipeCards} />
 					<Route path="/:id" exact component={Recipe} />
 					<Route path="/:id/edit" exact component={RecipeEdit} />
 				</Switch>
