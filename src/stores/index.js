@@ -4,7 +4,7 @@ import createSagaMiddleware from 'redux-saga';
 import thunk from 'redux-thunk';
 
 import recipes from '../reducers';
-import rootSaga from '../sagas';
+import sagas from '../sagas';
 
 const sagaMiddleware = createSagaMiddleware();
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -20,6 +20,6 @@ const configuredStore = createStore(
 		])
 	)
 );
-sagaMiddleware.run(rootSaga);
+sagaMiddleware.run(sagas);
 
 export default configuredStore;

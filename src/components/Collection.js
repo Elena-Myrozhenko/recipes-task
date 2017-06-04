@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Segment, Divider } from 'semantic-ui-react';
-import Quote from './Quote';
-import Nav from './Nav';
+import Quote from './Quote/Quote';
+import Nav from './Nav/Nav';
 import RecipeCardsFilter from '../containers/RecipeCardsFilter';
 
 const Collection = () => (

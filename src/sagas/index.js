@@ -1,4 +1,4 @@
-import { takeLatest, put } from 'redux-saga/effects';
+import { takeLatest, put, all } from 'redux-saga/effects';
 
 function* setFilterMask(action) {
 	try {
@@ -8,8 +8,8 @@ function* setFilterMask(action) {
 	}
 }
 
-export default function* rootSaga() {
-	yield [
+export default function* sagas() {
+	yield all([
 		takeLatest('SET_FILTER_MASK', setFilterMask)
-	];
+	]);
 }

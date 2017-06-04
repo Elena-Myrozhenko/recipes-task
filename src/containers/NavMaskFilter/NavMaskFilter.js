@@ -1,19 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import * as actions from '../actions';
 import { Input } from 'semantic-ui-react';
+import { filterByMask } from '../../actions';
 
-class NavFilterMask extends Component {
+class NavMaskFilter extends Component {
 	render() {
 		const { mask, filterByMask } = this.props;
 		return <Input transparent icon="search" iconPosition="left" placeholder="Filter by name or #tag..." value={mask} onChange={filterByMask} />;
 	}
 }
 
-NavFilterMask = connect((state) => {
+NavMaskFilter = connect((state) => {
 	const { mask } = state;
 	return { mask };
-}, actions)(NavFilterMask);
+}, { filterByMask })(NavMaskFilter);
 
 
-export default NavFilterMask;
+export default NavMaskFilter;

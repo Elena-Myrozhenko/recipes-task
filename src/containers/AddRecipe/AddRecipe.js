@@ -2,7 +2,7 @@ import _ from 'lodash';
 import React, { Component } from 'react';
 import { Modal, Segment, Divider, Button, Icon, Form, Dropdown, Input } from 'semantic-ui-react';
 import { connect } from 'react-redux';
-import { addRecipe } from '../actions';
+import { addRecipe } from '../../actions';
 
 class AddRecipe extends Component {
 	state = { formData: {}, tags: [], tagsOptions: [] }
