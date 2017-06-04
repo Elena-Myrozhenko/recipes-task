@@ -45,7 +45,7 @@ class RecipeCards extends Component {
 								style={{ fontWeight: 900, margin: '3em auto' }}>
 									&mdash; Can't fetch recipes because of "{errorMessage}".
 									<br />
-									<a style={{ cursor: 'pointer' }} onClick={(e) => { e.preventDefault(); this.fetchData(); }}>&mdash; Retry.</a>
+									<a style={{ cursor: 'pointer' }} onClick={(e) => { e.preventDefault(); this.fetchData(); }}>&mdash; Okay, retry.</a>
 							</Header>
 						:	!isFetching && !recipes.length
 							?	<Header as="h3"
