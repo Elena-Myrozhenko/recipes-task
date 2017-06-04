@@ -53,8 +53,8 @@ class AddRecipe extends Component {
 						<Form.Field name="title" required label="Title" control={Input} type="text" placeholder="e.g. Spaghetti With Tomato And Walnut Pesto" />
 						<Form.TextArea name="description" required label="Description" placeholder="e.g. Basil is a mere garnish in this nutty, cheesy, peak-season pesto sauce." rows="2" />
 						<Form.Group widths="equal">
-							<Form.TextArea name="ingredients" label="Ingredients" placeholder="Anything else we should know?" rows="3" />
-							<Form.TextArea name="directions" label="Directions" placeholder="Anything else we should know?" rows="3" />
+							<Form.TextArea name="ingredients" label="Ingredients" placeholder="e.g. 4 firm, almost-ripe pears (Bartlett or Bosc), peeled, cored, and cut lengthwise..." rows="3" />
+							<Form.TextArea name="directions" label="Directions" placeholder="e.g. Bring a large pot of salted water to a boil over high heat..." rows="3" />
 						</Form.Group>
 						<Divider />
 						<Form.Group widths="equal">
