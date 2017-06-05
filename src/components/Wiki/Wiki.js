@@ -1,5 +1,5 @@
-import React from "react";
-import { Container, Grid, Segment, List, Icon } from "semantic-ui-react";
+import React from 'react';
+import { Container, Grid, Segment, List, Icon } from 'semantic-ui-react';
 
 const Wiki = () =>
   <Container fluid className="basic inverted segment">
@@ -16,11 +16,11 @@ const Wiki = () =>
               <small>
                 <p>
                   A
-                  {" "}
+                  {' '}
                   <a href="https://en.wikipedia.org/wiki/Recipe">
                     <strong>recipe</strong>
                   </a>
-                  {" "}is a set of instructions that describes how to prepare or
+                  {' '}is a set of instructions that describes how to prepare or
                   make something, especially a culinary dish.
                   <br />Modern culinary recipes normally consist of several
                   components:
@@ -76,11 +76,11 @@ const Wiki = () =>
               <small>
                 <p>
                   A
-                  {" "}
+                  {' '}
                   <a href="https://en.wikipedia.org/wiki/Cookbook">
                     <strong>cookbook</strong>
                   </a>
-                  {" "}(sometimes <em>cookery book</em> in Commonwealth English
+                  {' '}(sometimes <em>cookery book</em> in Commonwealth English
                   or <em>cook book</em>) is a kitchen reference publication that
                   typically contains a collection of recipes.
                   <br />Modern versions may also include colorful illustrations

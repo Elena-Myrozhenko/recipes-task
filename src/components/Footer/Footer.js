@@ -1,5 +1,5 @@
-import React from "react";
-import { Container, Grid, Segment, Icon } from "semantic-ui-react";
+import React from 'react';
+import { Container, Grid, Segment, Icon } from 'semantic-ui-react';
 
 const Footer = () =>
   <Container fluid className="basic inverted segment void">
@@ -14,8 +14,8 @@ const Footer = () =>
           <Grid.Column>
             <Segment basic inverted className="void">
               &mdash; Hi! This is my homework, it's built with
-              {" "}<strong>React + Redux</strong>. Source code is available at
-              {" "}<Icon name="github" />
+              {' '}<strong>React + Redux</strong>. Source code is available at
+              {' '}<Icon name="github" />
               <a href="https://github.com/volodymyr-kushnir/recipes">
                 <strong>https://github.com/volodymyr-kushnir/recipes</strong>
               </a>.

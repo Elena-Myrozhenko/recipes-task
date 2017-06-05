@@ -1,24 +1,24 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { withRouter } from "react-router";
-import classnames from "classnames";
-import queryString from "query-string";
-import { Container, Segment, Divider, Header, Grid } from "semantic-ui-react";
-import Quote from "../../components/Quote/Quote";
-import Nav from "../../components/Nav/Nav";
-import RecipeCard from "../../components/RecipeCard/RecipeCard";
-import "./RecipeCards.css";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
+import classnames from 'classnames';
+import queryString from 'query-string';
+import { Container, Segment, Divider, Header, Grid } from 'semantic-ui-react';
+import Quote from '../../components/Quote/Quote';
+import Nav from '../../components/Nav/Nav';
+import RecipeCard from '../../components/RecipeCard/RecipeCard';
+import './RecipeCards.css';
 import {
   getVisibleRecipes,
   getIsFetching,
   getErrorMessage
-} from "../../reducers";
+} from '../../reducers';
 import {
   fetchRecipes,
   toggleFavorite,
   toggleCooked,
   filterByTag
-} from "../../actions";
+} from '../../actions';
 
 class RecipeCards extends Component {
   fetchData() {
@@ -58,12 +58,12 @@ class RecipeCards extends Component {
                 as="h3"
                 textAlign="center"
                 color="grey"
-                style={{ fontWeight: 900, margin: "3em auto" }}
+                style={{ fontWeight: 900, margin: '3em auto' }}
               >
                 &mdash; Can't fetch recipes because of "{errorMessage}".
                 <br />
                 <a
-                  style={{ cursor: "pointer" }}
+                  style={{ cursor: 'pointer' }}
                   onClick={e => {
                     e.preventDefault();
                     this.fetchData();
@@ -77,7 +77,7 @@ class RecipeCards extends Component {
                   as="h3"
                   textAlign="center"
                   color="grey"
-                  style={{ fontWeight: 900, margin: "3em auto" }}
+                  style={{ fontWeight: 900, margin: '3em auto' }}
                 >
                   &mdash; Meh, empty. There are no such recipes in this
                   collection, try elsewhere.
@@ -86,7 +86,7 @@ class RecipeCards extends Component {
                   basic
                   vertical
                   loading={isFetching}
-                  style={{ minHeight: "300px" }}
+                  style={{ minHeight: '300px' }}
                 >
                   <Grid
                     stackable
@@ -117,7 +117,7 @@ class RecipeCards extends Component {
 RecipeCards = withRouter(
   connect(
     (state, router) => {
-      const filter = queryString.parse(router.location.search).filter || "all";
+      const filter = queryString.parse(router.location.search).filter || 'all';
       return {
         recipes: getVisibleRecipes(state, filter),
         isFetching: getIsFetching(state, filter),

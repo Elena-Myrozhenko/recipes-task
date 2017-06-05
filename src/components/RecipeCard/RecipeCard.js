@@ -1,7 +1,7 @@
-import moment from "moment";
-import React from "react";
-import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
+import moment from 'moment';
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import {
   Card,
   Divider,
@@ -10,7 +10,7 @@ import {
   Icon,
   List,
   Accordion
-} from "semantic-ui-react";
+} from 'semantic-ui-react';
 
 const RecipeCard = ({
   onStarClick,
@@ -37,7 +37,7 @@ const RecipeCard = ({
             <Icon
               name="star"
               fitted
-              style={{ color: favorite ? "#FFB70A" : "inherit" }}
+              style={{ color: favorite ? '#FFB70A' : 'inherit' }}
               onClick={onStarClick}
             />
           }
@@ -55,7 +55,7 @@ const RecipeCard = ({
             <Icon
               name="spoon"
               fitted
-              style={{ color: cooked ? "black" : "inherit" }}
+              style={{ color: cooked ? 'black' : 'inherit' }}
               onClick={onCutleryClick}
             />
           }
@@ -71,7 +71,7 @@ const RecipeCard = ({
         {versions.length > 0
           ? <Popup
               trigger={
-                <a style={{ fontWeight: "800" }}>
+                <a style={{ fontWeight: '800' }}>
                   &times;{versions.length + 1}
                 </a>
               }
@@ -80,7 +80,7 @@ const RecipeCard = ({
               size="tiny"
             >
               <Popup.Content>
-                This recipe has {versions.length + 1} version{versions.length + 1 > 1 ? "s" : ""}
+                This recipe has {versions.length + 1} version{versions.length + 1 > 1 ? 's' : ''}
               </Popup.Content>
             </Popup>
           : null}
@@ -88,7 +88,7 @@ const RecipeCard = ({
         {video
           ? <Popup
               trigger={
-                <Link to={"/" + id}>
+                <Link to={'/' + id}>
                   <Icon name="video" fitted />
                 </Link>
               }
@@ -107,18 +107,18 @@ const RecipeCard = ({
       </span>
     </Card.Content>
     {photo
-      ? <Link to={"/" + id}>
+      ? <Link to={'/' + id}>
           <Image src={photo} alt={title} fluid />
         </Link>
       : null}
     <Card.Content>
-      <Link to={"/" + id} className="header" style={{ fontWeight: "900" }}>
+      <Link to={'/' + id} className="header" style={{ fontWeight: '900' }}>
         {title}
       </Link>
       <Card.Meta>
-        <List horizontal link style={{ fontWeight: "700" }}>
+        <List horizontal link style={{ fontWeight: '700' }}>
           {tags.map((t, tx) =>
-            <List.Item key={tx} onClick={onTagClick.bind(null, "#" + t)}>
+            <List.Item key={tx} onClick={onTagClick.bind(null, '#' + t)}>
               <List.Content><a>#{t}</a></List.Content>
             </List.Item>
           )}
@@ -133,7 +133,7 @@ const RecipeCard = ({
           <Accordion>
             <Accordion.Title>
               <Icon name="shopping basket" />Ingredients
-              {" "}<small>({ingredients.length})</small>
+              {' '}<small>({ingredients.length})</small>
             </Accordion.Title>
             <Accordion.Content>
               <Divider fitted />
@@ -147,7 +147,7 @@ const RecipeCard = ({
             </Accordion.Content>
             <Accordion.Title>
               <Icon name="ordered list" />Directions
-              {" "}<small>({directions.length})</small>
+              {' '}<small>({directions.length})</small>
             </Accordion.Title>
             <Accordion.Content>
               <Divider fitted />

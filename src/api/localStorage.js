@@ -1,6 +1,6 @@
 export const loadFromLocalStorage = () => {
   try {
-    const stringified = localStorage.getItem("recipes");
+    const stringified = localStorage.getItem('recipes');
     if (stringified === null) {
       return undefined;
     }
@@ -13,6 +13,6 @@ export const loadFromLocalStorage = () => {
 export const saveToLocalStorage = recipes => {
   try {
     const stringify = JSON.stringify(recipes);
-    localStorage.setItem("recipes", stringify);
+    localStorage.setItem('recipes', stringify);
   } catch (error) {}
 };

@@ -1,10 +1,10 @@
-import _ from "lodash";
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { withRouter } from "react-router";
-import { Link } from "react-router-dom";
-import * as actions from "../actions";
-import { getRecipe } from "../reducers";
+import _ from 'lodash';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
+import { Link } from 'react-router-dom';
+import * as actions from '../actions';
+import { getRecipe } from '../reducers';
 import {
   Container,
   Segment,
@@ -16,7 +16,7 @@ import {
   Dropdown,
   Menu,
   Button
-} from "semantic-ui-react";
+} from 'semantic-ui-react';
 
 class Recipe extends Component {
   fetchData() {
@@ -26,10 +26,10 @@ class Recipe extends Component {
   componentDidMount() {
     if (this.props.recipe && Array.isArray(this.props.recipe.tags)) {
       this.setState({
-        tagsNew: [...this.props.recipe.tags.map(t => "#" + t)],
+        tagsNew: [...this.props.recipe.tags.map(t => '#' + t)],
         tagsOptions: [
           ...this.props.recipe.tags.map(t => {
-            return { text: "#" + t, value: "#" + t };
+            return { text: '#' + t, value: '#' + t };
           })
         ]
       });
@@ -55,14 +55,14 @@ class Recipe extends Component {
       description: formData.description.trim(),
       photo: formData.photo.trim(),
       video: formData.video.trim(),
-      ingredients: formData.ingredients.trim().split("\n").filter(Boolean),
-      directions: formData.directions.trim().split("\n").filter(Boolean),
+      ingredients: formData.ingredients.trim().split('\n').filter(Boolean),
+      directions: formData.directions.trim().split('\n').filter(Boolean),
       // store tags as plain strings without hashes
-      tags: formData.tags.map(t => t.replace("#", ""))
+      tags: formData.tags.map(t => t.replace('#', ''))
     });
   };
   handleTagsAddition = (event, { value }) => {
-    value = (value.startsWith("#") ? value : "#" + value).replace(/ /g, "");
+    value = (value.startsWith('#') ? value : '#' + value).replace(/ /g, '');
     this.setState({
       tagsOptions: [
         ...this.state.tagsOptions.filter(t => t.value !== value),
@@ -75,7 +75,7 @@ class Recipe extends Component {
       // always convert last item to a #hashtag, merge with the original array and deduplicate it
       tagsNew: [
         ...new Set(
-          value.concat(("#" + value.pop()).replace("##", "#").replace(/ /g, ""))
+          value.concat(('#' + value.pop()).replace('##', '#').replace(/ /g, ''))
         )
       ]
     });
@@ -84,7 +84,7 @@ class Recipe extends Component {
     if (event.which === 32) {
       event.preventDefault();
       // don't even try to add an empty tag
-      if (event.target.value.trim() !== "") {
+      if (event.target.value.trim() !== '') {
         this.handleTagsAddition(event, { value: event.target.value });
         this.handleTagsChange(event, {
           value: [...this.state.tagsNew, event.target.value]
@@ -173,24 +173,24 @@ class Recipe extends Component {
                   label="Ingredients"
                   placeholder="e.g. 3 tablespoons olive oil..."
                   rows="6"
-                  defaultValue={ingredients.join("\n")}
+                  defaultValue={ingredients.join('\n')}
                 />
                 <Form.TextArea
                   name="directions"
                   label="Directions"
                   placeholder="e.g. Preheat oven to 400°F..."
                   rows="6"
-                  defaultValue={directions.join("\n\n")}
+                  defaultValue={directions.join('\n\n')}
                 />
               </Form.Group>
               <Menu text stackable>
-                <Link to={"/" + id} className="item">
+                <Link to={'/' + id} className="item">
                   <Icon name="remove" />Cancel
                 </Link>
                 <Link
                   to="/"
                   className="item"
-                  style={{ color: "red" }}
+                  style={{ color: 'red' }}
                   onClick={deleteRecipe.bind(null, id)}
                 >
                   <Icon name="trash outline" />Delete recipe

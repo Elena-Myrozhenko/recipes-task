@@ -1,10 +1,10 @@
-import moment from "moment";
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { withRouter } from "react-router";
-import { Link } from "react-router-dom";
-import * as actions from "../actions";
-import { getRecipe } from "../reducers";
+import moment from 'moment';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
+import { Link } from 'react-router-dom';
+import * as actions from '../actions';
+import { getRecipe } from '../reducers';
 import {
   Container,
   Segment,
@@ -17,7 +17,7 @@ import {
   List,
   Divider,
   Grid
-} from "semantic-ui-react";
+} from 'semantic-ui-react';
 
 class Recipe extends Component {
   fetchData() {
@@ -62,7 +62,7 @@ class Recipe extends Component {
                 {description}
               </Header.Subheader>
             </Header>
-            <List horizontal link style={{ fontWeight: "700" }}>
+            <List horizontal link style={{ fontWeight: '700' }}>
               {tags.map((t, tx) =>
                 <List.Item key={tx}>
                   <List.Content>#{t}</List.Content>
@@ -98,7 +98,7 @@ class Recipe extends Component {
                 <Popup
                   trigger={
                     <a
-                      style={{ color: favorite ? "#FFB70A" : "grey" }}
+                      style={{ color: favorite ? '#FFB70A' : 'grey' }}
                       onClick={() => toggleFavorite(id)}
                     >
                       <Icon name="star" fitted />
@@ -117,7 +117,7 @@ class Recipe extends Component {
                 <Popup
                   trigger={
                     <a
-                      style={{ color: cooked ? "black" : "grey" }}
+                      style={{ color: cooked ? 'black' : 'grey' }}
                       onClick={() => toggleCooked(id)}
                     >
                       <Icon name="spoon" fitted />
@@ -138,7 +138,7 @@ class Recipe extends Component {
                       trigger={
                         <a
                           className="left floated"
-                          style={{ fontWeight: "800" }}
+                          style={{ fontWeight: '800' }}
                         >
                           &times;{versions.length + 1}
                         </a>
@@ -148,7 +148,7 @@ class Recipe extends Component {
                       size="tiny"
                     >
                       <Popup.Content>
-                        This recipe has {versions.length + 1} version{versions.length + 1 > 1 ? "s" : ""}
+                        This recipe has {versions.length + 1} version{versions.length + 1 > 1 ? 's' : ''}
                       </Popup.Content>
                     </Popup>
                   </Menu.Item>
@@ -160,7 +160,7 @@ class Recipe extends Component {
                 <Link to="/" className="item">
                   <Icon name="home" />Home
                 </Link>
-                <Link to={"/" + id + "/edit"} className="item">
+                <Link to={'/' + id + '/edit'} className="item">
                   <Icon name="write" />Edit
                 </Link>
               </Menu.Menu>

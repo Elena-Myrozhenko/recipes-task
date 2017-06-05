@@ -1,8 +1,8 @@
-import React from "react";
-import { Menu, Icon } from "semantic-ui-react";
-import NavLinkFilter from "./NavLinkFilter";
-import AddRecipe from "../../containers/AddRecipe/AddRecipe";
-import NavMaskFilter from "../../containers/NavMaskFilter/NavMaskFilter";
+import React from 'react';
+import { Menu, Icon } from 'semantic-ui-react';
+import NavLinkFilter from './NavLinkFilter';
+import AddRecipe from '../../containers/AddRecipe/AddRecipe';
+import NavMaskFilter from '../../containers/NavMaskFilter/NavMaskFilter';
 
 const Nav = () =>
   <Menu text>

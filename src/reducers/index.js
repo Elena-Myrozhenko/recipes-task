@@ -1,15 +1,15 @@
-import { combineReducers } from "redux";
-import { routerReducer } from "react-router-redux";
-import byId, * as fromById from "./byId";
-import createList, * as fromList from "./createList";
-import mask from "./mask";
+import { combineReducers } from 'redux';
+import { routerReducer } from 'react-router-redux';
+import byId, * as fromById from './byId';
+import createList, * as fromList from './createList';
+import mask from './mask';
 
 const listByFilter = combineReducers({
-  all: createList("all"),
-  favorites: createList("favorites"),
-  cooked: createList("cooked"),
-  uncooked: createList("uncooked"),
-  untagged: createList("untagged")
+  all: createList('all'),
+  favorites: createList('favorites'),
+  cooked: createList('cooked'),
+  uncooked: createList('uncooked'),
+  untagged: createList('untagged')
 });
 
 const recipes = combineReducers({
@@ -27,8 +27,8 @@ export const getVisibleRecipes = (state, filter) => {
     .map(id => fromById.getRecipe(state.byId, id))
     .filter(
       r =>
-        state.mask.startsWith("#")
-          ? r.tags.indexOf(state.mask.replace("#", "")) !== -1
+        state.mask.startsWith('#')
+          ? r.tags.indexOf(state.mask.replace('#', '')) !== -1
           : r.title.includes(state.mask)
     )
     .sort((a, b) => a.timestamp - b.timestamp)

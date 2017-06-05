@@ -1,5 +1,5 @@
-import _ from "lodash";
-import React, { Component } from "react";
+import _ from 'lodash';
+import React, { Component } from 'react';
 import {
   Modal,
   Segment,
@@ -9,9 +9,9 @@ import {
   Form,
   Dropdown,
   Input
-} from "semantic-ui-react";
-import { connect } from "react-redux";
-import { addRecipe } from "../../actions";
+} from 'semantic-ui-react';
+import { connect } from 'react-redux';
+import { addRecipe } from '../../actions';
 
 class AddRecipe extends Component {
   state = { formData: {}, tags: [], tagsOptions: [] };
@@ -23,15 +23,15 @@ class AddRecipe extends Component {
       description: formData.description.trim(),
       photo: formData.photo.trim(),
       video: formData.video.trim(),
-      ingredients: formData.ingredients.trim().split("\n").filter(Boolean),
-      directions: formData.directions.trim().split("\n").filter(Boolean),
+      ingredients: formData.ingredients.trim().split('\n').filter(Boolean),
+      directions: formData.directions.trim().split('\n').filter(Boolean),
       // store tags as plain strings without hashes
-      tags: formData.tags.map(t => t.replace("#", ""))
+      tags: formData.tags.map(t => t.replace('#', ''))
     });
     this.refs.addRecipeModal.handleClose();
   };
   handleTagsAddition = (event, { value }) => {
-    value = (value.startsWith("#") ? value : "#" + value).replace(/ /g, "");
+    value = (value.startsWith('#') ? value : '#' + value).replace(/ /g, '');
     this.setState({
       tagsOptions: [
         ...this.state.tagsOptions.filter(t => t.value !== value),
@@ -44,7 +44,7 @@ class AddRecipe extends Component {
       // always convert last item to a #hashtag, merge with the original array and deduplicate it
       tags: [
         ...new Set(
-          value.concat(("#" + value.pop()).replace("##", "#").replace(/ /g, ""))
+          value.concat(('#' + value.pop()).replace('##', '#').replace(/ /g, ''))
         )
       ]
     });
@@ -53,7 +53,7 @@ class AddRecipe extends Component {
     if (event.which === 32) {
       event.preventDefault();
       // don't even try to add an empty tag
-      if (event.target.value.trim() !== "") {
+      if (event.target.value.trim() !== '') {
         this.handleTagsAddition(event, { value: event.target.value });
         this.handleTagsChange(event, {
           value: [...this.state.tags, event.target.value]

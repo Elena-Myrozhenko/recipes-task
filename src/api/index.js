@@ -1,7 +1,7 @@
-import uuid from "uuid";
-import moment from "moment";
-import fakeRecipes from "./fakeRecipes";
-import { loadFromLocalStorage, saveToLocalStorage } from "./localStorage";
+import uuid from 'uuid';
+import moment from 'moment';
+import fakeRecipes from './fakeRecipes';
+import { loadFromLocalStorage, saveToLocalStorage } from './localStorage';
 
 const recipes = loadFromLocalStorage() || fakeRecipes;
 saveToLocalStorage(recipes);
@@ -11,20 +11,20 @@ const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
 export const fetchRecipes = filter =>
   delay(250).then(() => {
     if (Math.random() > 0.75)
-      throw new Error("randomly forced throw, 25% chance");
+      throw new Error('randomly forced throw, 25% chance');
     switch (filter) {
-      case "all":
+      case 'all':
         return recipes;
-      case "favorites":
+      case 'favorites':
         return recipes.filter(r => r.favorite);
-      case "cooked":
+      case 'cooked':
         return recipes.filter(r => r.cooked);
-      case "uncooked":
+      case 'uncooked':
         return recipes.filter(r => !r.cooked);
-      case "untagged":
+      case 'untagged':
         return recipes.filter(r => r.tags.length === 0);
       default:
-        throw new Error("Unknown filter: " + filter);
+        throw new Error('Unknown filter: ' + filter);
     }
   });
 
