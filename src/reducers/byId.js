@@ -1,17 +1,17 @@
 const byId = (state = {}, action) => {
-	if (action.response) {
-		return {
-			...state,
-			...action.response.entities.recipes
-		}
-	}
-	if (action.type === 'DELETE_RECIPE_SUCCESS') {
-		const nextState = { ...state };
-		delete nextState[action.id];
-		return nextState;
-	}
-	return state;
-}
+  if (action.response) {
+    return {
+      ...state,
+      ...action.response.entities.recipes
+    };
+  }
+  if (action.type === "DELETE_RECIPE_SUCCESS") {
+    const nextState = { ...state };
+    delete nextState[action.id];
+    return nextState;
+  }
+  return state;
+};
 
 export default byId;
 export const getRecipe = (state, id) => state[id];
