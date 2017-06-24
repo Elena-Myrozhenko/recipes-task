@@ -5,8 +5,8 @@
   "private": true,
   "devDependencies": {
     "gh-pages": "1.0.0",
-    "husky": "0.13.4",
-    "lint-staged": "3.6.1",
+    "husky": "0.14.0",
+    "lint-staged": "4.0.0",
     "prettier": "1.4.4",
     "react-scripts": "1.0.7"
   },
@@ -24,9 +24,9 @@
     "react-router-redux": "5.0.0-alpha.3",
     "redux": "3.7.0",
     "redux-logger": "3.0.6",
-    "redux-saga": "0.15.3",
+    "redux-saga": "0.15.4",
     "redux-thunk": "2.2.0",
-    "semantic-ui-react": "0.68.5",
+    "semantic-ui-react": "0.70.0",
     "uuid": "3.1.0"
   },
   "scripts": {
