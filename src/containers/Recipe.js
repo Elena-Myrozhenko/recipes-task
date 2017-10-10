@@ -16,7 +16,7 @@ import {
   Header,
   List,
   Divider,
-  Grid
+  Grid,
 } from 'semantic-ui-react';
 
 class Recipe extends Component {
@@ -47,53 +47,16 @@ class Recipe extends Component {
       cooked,
       favorite,
       timestamp,
-      versions
+      versions,
     } = recipe;
     return (
       <Container text>
         <Segment basic padded>
-          {video
-            ? <Embed url={video} placeholder={photo} />
-            : <Image src={photo} shape="rounded" centered fluid alt={title} />}
-          <Segment basic vertical>
-            <Header textAlign="center" size="large" style={{ fontWeight: 900 }}>
-              {title}
-              <Header.Subheader>
-                {description}
-              </Header.Subheader>
-            </Header>
-            <List horizontal link style={{ fontWeight: '700' }}>
-              {tags.map((t, tx) =>
-                <List.Item key={tx}>
-                  <List.Content>#{t}</List.Content>
-                </List.Item>
-              )}
-            </List>
-            <Divider />
-            <Grid stackable doubling columns="2">
-              <Grid.Column>
-                <Header as="h4">Ingredients</Header>
-                {ingredients.length > 0
-                  ? <List bulleted>
-                      {ingredients.map((i, ix) =>
-                        <List.Item key={ix}>{i}</List.Item>
-                      )}
-                    </List>
-                  : null}
-              </Grid.Column>
-              <Grid.Column>
-                <Header as="h4">Directions</Header>
-                {directions.length > 0
-                  ? <List ordered>
-                      {directions.map((d, dx) =>
-                        <List.Item key={dx}>{d}</List.Item>
-                      )}
-                    </List>
-                  : null}
-              </Grid.Column>
-            </Grid>
-            <Divider />
-            <Menu text>
+          <Menu text>
+            <Menu.Item as={Link} to="/">
+              <Icon name="home" />Home
+            </Menu.Item>
+            <Menu.Menu position="right">
               <Menu.Item>
                 <Popup
                   trigger={
@@ -108,9 +71,7 @@ class Recipe extends Component {
                   inverted
                   size="tiny"
                 >
-                  <Popup.Content>
-                    Make this recipe your favorite
-                  </Popup.Content>
+                  <Popup.Content>Make this recipe your favorite</Popup.Content>
                 </Popup>
               </Menu.Item>
               <Menu.Item>
@@ -127,59 +88,97 @@ class Recipe extends Component {
                   inverted
                   size="tiny"
                 >
+                  <Popup.Content>Mark this recipe as cooked</Popup.Content>
+                </Popup>
+              </Menu.Item>
+              {versions.length > 0 ? (
+                <Menu.Item>
+                  <Popup
+                    trigger={
+                      <a className="left floated" style={{ fontWeight: '800' }}>
+                        &times;{versions.length + 1}
+                      </a>
+                    }
+                    position="top center"
+                    inverted
+                    size="tiny"
+                  >
+                    <Popup.Content>
+                      This recipe has {versions.length + 1} version{versions.length + 1 > 1 ? 's' : ''}
+                    </Popup.Content>
+                  </Popup>
+                </Menu.Item>
+              ) : null}
+              <Menu.Item>
+                <Popup
+                  trigger={<em>{moment.unix(timestamp).fromNow()}</em>}
+                  position="top center"
+                  inverted
+                  size="tiny"
+                >
                   <Popup.Content>
-                    Mark this recipe as cooked
+                    {moment.unix(timestamp).format('dddd, MMMM Do YYYY, HH:mm:ss')}
                   </Popup.Content>
                 </Popup>
               </Menu.Item>
-              {versions.length > 0
-                ? <Menu.Item>
-                    <Popup
-                      trigger={
-                        <a
-                          className="left floated"
-                          style={{ fontWeight: '800' }}
-                        >
-                          &times;{versions.length + 1}
-                        </a>
-                      }
-                      position="top center"
-                      inverted
-                      size="tiny"
-                    >
-                      <Popup.Content>
-                        This recipe has {versions.length + 1} version{versions.length + 1 > 1 ? 's' : ''}
-                      </Popup.Content>
-                    </Popup>
-                  </Menu.Item>
-                : null}
-              <Menu.Item>
-                <em>{moment.unix(timestamp).fromNow()}</em>
-              </Menu.Item>
-              <Menu.Menu className="right">
-                <Link to="/" className="item">
-                  <Icon name="home" />Home
-                </Link>
-                <Link to={'/' + id + '/edit'} className="item">
-                  <Icon name="write" />Edit
-                </Link>
-              </Menu.Menu>
-            </Menu>
+            </Menu.Menu>
+          </Menu>
+          {video ? (
+            <Embed url={video} placeholder={photo} />
+          ) : (
+            <Image src={photo} shape="rounded" centered fluid alt={title} />
+          )}
+          <Segment basic vertical>
+            <Header textAlign="center" size="large" style={{ fontWeight: 900 }}>
+              {title}
+              <Header.Subheader>{description}</Header.Subheader>
+            </Header>
+            <List horizontal link style={{ fontWeight: '700' }}>
+              {tags.map((t, tx) => (
+                <List.Item key={tx}>
+                  <List.Content>#{t}</List.Content>
+                </List.Item>
+              ))}
+            </List>
+            <Divider />
+            <Grid stackable doubling columns="2">
+              <Grid.Column>
+                <Header as="h4">Ingredients</Header>
+                {ingredients.length > 0 ? (
+                  <List bulleted>
+                    {ingredients.map((i, ix) => <List.Item key={ix}>{i}</List.Item>)}
+                  </List>
+                ) : null}
+              </Grid.Column>
+              <Grid.Column>
+                <Header as="h4">Directions</Header>
+                {directions.length > 0 ? (
+                  <List ordered>
+                    {directions.map((d, dx) => <List.Item key={dx}>{d}</List.Item>)}
+                  </List>
+                ) : null}
+              </Grid.Column>
+            </Grid>
           </Segment>
+          <Menu text>
+            <Menu.Menu position="right">
+              <Menu.Item as={Link} to={'/' + id + '/edit'}>
+                <Icon name="write" />Edit
+              </Menu.Item>
+            </Menu.Menu>
+          </Menu>
         </Segment>
       </Container>
     );
   }
 }
 
-Recipe = withRouter(
+export default withRouter(
   connect((state, router) => {
     const { id } = router.match.params;
     return {
       recipe: getRecipe(state, id),
-      id
+      id,
     };
   }, actions)(Recipe)
 );
-
-export default Recipe;

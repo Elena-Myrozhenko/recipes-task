@@ -2,31 +2,22 @@ import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'react-router-redux';
-import { Switch, Route } from 'react-router';
+import { PersistGate } from 'redux-persist/es/integration/react';
 import createHistory from 'history/createBrowserHistory';
-import store from './stores';
-import RecipeCards from './containers/RecipeCards/RecipeCards';
-import Recipe from './containers/Recipe';
-import RecipeEdit from './containers/RecipeEdit';
-import Wiki from './components/Wiki/Wiki';
-import Footer from './components/Footer/Footer';
+import configureStore from './stores';
+import App from './containers/App/App';
 import './index.css';
 
+export const { persistor, store } = configureStore();
 export const history = createHistory();
 
 render(
   <Provider store={store}>
-    <ConnectedRouter history={history}>
-      <div>
-        <Switch>
-          <Route path="/" exact component={RecipeCards} />
-          <Route path="/:id" exact component={Recipe} />
-          <Route path="/:id/edit" exact component={RecipeEdit} />
-        </Switch>
-        <Wiki />
-        <Footer />
-      </div>
-    </ConnectedRouter>
+    <PersistGate persistor={persistor} loading={<div>Loading...</div>}>
+      <ConnectedRouter history={history}>
+        <App />
+      </ConnectedRouter>
+    </PersistGate>
   </Provider>,
   document.getElementById('root')
 );

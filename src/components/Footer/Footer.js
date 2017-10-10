@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Grid, Segment, Icon } from 'semantic-ui-react';
 
-const Footer = () =>
+export default () => (
   <Container fluid className="basic inverted segment void">
     <Container>
       <Grid stackable columns="equal" className="inverted">
@@ -13,9 +13,8 @@ const Footer = () =>
           </Grid.Column>
           <Grid.Column>
             <Segment basic inverted className="void">
-              &mdash; Hi! This is my homework, it's built with
-              {' '}<strong>React + Redux</strong>. Source code is available at
-              {' '}<Icon name="github" />
+              &mdash; Hi! This is my homework, it's built with <strong>React + Redux</strong>.
+              Source code is available at <Icon name="github" />
               <a href="https://github.com/volodymyr-kushnir/recipes">
                 <strong>https://github.com/volodymyr-kushnir/recipes</strong>
               </a>.
@@ -24,6 +23,5 @@ const Footer = () =>
         </Grid.Row>
       </Grid>
     </Container>
-  </Container>;
-
-export default Footer;
+  </Container>
+);

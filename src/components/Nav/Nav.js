@@ -1,26 +1,53 @@
-import React from 'react';
-import { Menu, Icon } from 'semantic-ui-react';
-import NavLinkFilter from './NavLinkFilter';
-import AddRecipe from '../../containers/AddRecipe/AddRecipe';
-import NavMaskFilter from '../../containers/NavMaskFilter/NavMaskFilter';
+import React, { Component } from 'react';
+import { Menu, Icon, Input } from 'semantic-ui-react';
+import { NavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { filterByMask } from '../../actions';
 
-const Nav = () =>
-  <Menu text>
-    <AddRecipe>
-      <Menu.Item icon as="a">
-        <Icon name="plus" />
-      </Menu.Item>
-    </AddRecipe>
-    <NavLinkFilter filter="all">All</NavLinkFilter>
-    <NavLinkFilter filter="favorites">Favorites</NavLinkFilter>
-    <NavLinkFilter filter="cooked">Cooked</NavLinkFilter>
-    <NavLinkFilter filter="uncooked">Uncooked</NavLinkFilter>
-    <NavLinkFilter filter="untagged">Untagged</NavLinkFilter>
-    <Menu.Menu position="right">
-      <Menu.Item>
-        <NavMaskFilter />
-      </Menu.Item>
-    </Menu.Menu>
-  </Menu>;
+class Nav extends Component {
+  render() {
+    const { mask, filterByMask } = this.props;
+    return (
+      <Menu text>
+        <Menu.Item as={NavLink} to="/?filter=all" activeClassName="active">
+          All
+        </Menu.Item>
+        <Menu.Item as={NavLink} to="/?filter=favorites" activeClassName="active">
+          Favorites
+        </Menu.Item>
+        <Menu.Item as={NavLink} to="/?filter=cooked" activeClassName="active">
+          Cooked
+        </Menu.Item>
+        <Menu.Item as={NavLink} to="/?filter=uncooked" activeClassName="active">
+          Uncooked
+        </Menu.Item>
+        <Menu.Item as={NavLink} to="/?filter=untagged" activeClassName="active">
+          Untagged
+        </Menu.Item>
+        <Menu.Item>
+          <Input
+            transparent
+            icon="search"
+            iconPosition="left"
+            placeholder="Filter by name or #tag..."
+            value={mask}
+            onChange={filterByMask}
+          />
+        </Menu.Item>
+        <Menu.Menu position="right">
+          <Menu.Item as={NavLink} to="/add">
+            <Icon name="plus" />Add new recipe...
+          </Menu.Item>
+        </Menu.Menu>
+      </Menu>
+    );
+  }
+}
 
-export default Nav;
+export default connect(
+  state => {
+    const { mask } = state;
+    return { mask };
+  },
+  { filterByMask }
+)(Nav);

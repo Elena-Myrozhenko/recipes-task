@@ -8,7 +8,8 @@
     "husky": "0.14.3",
     "lint-staged": "4.2.3",
     "prettier": "1.7.4",
-    "react-scripts": "1.0.14"
+    "react-scripts": "1.0.14",
+		"source-map-explorer": "1.5.0"
   },
   "dependencies": {
     "classnames": "2.2.5",
@@ -24,23 +25,26 @@
     "react-router-redux": "5.0.0-alpha.6",
     "redux": "3.7.2",
     "redux-logger": "3.0.6",
+		"redux-persist": "5.0.0-beta.1",
     "redux-saga": "0.15.6",
     "redux-thunk": "2.2.0",
     "semantic-ui-react": "0.74.2",
     "uuid": "3.1.0"
   },
   "scripts": {
+		"analyze": "source-map-explorer build/static/js/main.*",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
+		"format": "prettier --trailing-comma es5 --print-width 100 --tab-width 2 --single-quote --write 'src/**/*.js'",
     "precommit": "lint-staged"
   },
   "lint-staged": {
     "src/**/*.js": [
-      "prettier --single-quote --write",
+      "prettier --trailing-comma es5 --print-width 100 --tab-width 2 --single-quote --write",
       "git add"
     ]
   }

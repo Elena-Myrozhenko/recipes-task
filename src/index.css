@@ -16,3 +16,5 @@
 .ui.multiple.search.selection.dropdown > input { margin: 0 0 0 .64285714em; line-height: 2em; }
 .ui.multiple.search.selection.dropdown > .menu { min-width: calc(100% + 2px) !important; }
 .ui.multiple.search.selection.dropdown > .menu > .message { white-space: normal; }
+.ui.accordion .accordion .title .dropdown.icon,
+.ui.accordion .title .dropdown.icon { margin-left: -5px; }
