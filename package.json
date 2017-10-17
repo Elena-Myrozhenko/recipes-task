@@ -14,8 +14,8 @@
   "dependencies": {
     "classnames": "2.2.5",
     "lato-font": "3.0.0",
-    "moment": "2.18.1",
-    "normalizr": "3.2.3",
+    "moment": "2.19.1",
+    "normalizr": "3.2.4",
     "query-string": "5.0.0",
     "react": "16.0.0",
     "react-dom": "16.0.0",
@@ -26,9 +26,9 @@
     "redux": "3.7.2",
     "redux-logger": "3.0.6",
 		"redux-persist": "5.0.0-beta.1",
-    "redux-saga": "0.15.6",
+    "redux-saga": "0.16.0",
     "redux-thunk": "2.2.0",
-    "semantic-ui-react": "0.74.2",
+    "semantic-ui-react": "0.75.0",
     "uuid": "3.1.0"
   },
   "scripts": {
