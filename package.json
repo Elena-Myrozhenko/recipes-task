@@ -6,7 +6,7 @@
   "devDependencies": {
     "gh-pages": "1.0.0",
     "husky": "0.14.3",
-    "lint-staged": "4.2.3",
+    "lint-staged": "4.3.0",
     "prettier": "1.7.4",
     "react-scripts": "1.0.14",
 		"source-map-explorer": "1.5.0"
@@ -28,7 +28,7 @@
 		"redux-persist": "5.0.0-beta.1",
     "redux-saga": "0.16.0",
     "redux-thunk": "2.2.0",
-    "semantic-ui-react": "0.75.0",
+    "semantic-ui-react": "0.75.1",
     "uuid": "3.1.0"
   },
   "scripts": {
