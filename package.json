@@ -6,9 +6,8 @@
   "devDependencies": {
     "gh-pages": "1.1.0",
     "husky": "0.14.3",
-    "lint-staged": "6.0.0",
-    "prettier": "1.9.2",
-    "react-scripts": "1.0.17",
+    "lint-staged": "6.1.0",
+    "prettier": "1.10.2",
     "source-map-explorer": "1.5.0"
   },
   "dependencies": {
@@ -23,13 +22,14 @@
     "react-router": "4.2.0",
     "react-router-dom": "4.2.2",
     "react-router-redux": "5.0.0-alpha.6",
+    "react-scripts": "1.1.0",
     "redux": "3.7.2",
     "redux-logger": "3.0.6",
-    "redux-persist": "5.4.0",
+    "redux-persist": "5.5.0",
     "redux-saga": "0.16.0",
     "redux-thunk": "2.2.0",
-    "semantic-ui-react": "0.77.1",
-    "uuid": "3.1.0"
+    "semantic-ui-react": "0.77.2",
+    "uuid": "3.2.1"
   },
   "scripts": {
     "analyze": "source-map-explorer build/static/js/main.*",
@@ -39,12 +39,12 @@
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "format": "prettier --trailing-comma es5 --print-width 100 --tab-width 2 --single-quote --write 'src/**/*.js'",
+    "prettify": "prettier --print-width 100 --write 'src/**/*.js'",
     "precommit": "lint-staged"
   },
   "lint-staged": {
     "src/**/*.js": [
-      "prettier --trailing-comma es5 --print-width 100 --tab-width 2 --single-quote --write",
+      "prettier --print-width 100 --write",
       "git add"
     ]
   }
