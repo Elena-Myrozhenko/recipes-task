@@ -1,8 +1,10 @@
-import React, { Component } from 'react';
-import { Menu, Icon, Input } from 'semantic-ui-react';
-import { NavLink } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { filterByMask } from '../../actions';
+import React, { Component } from "react";
+import { Menu, Icon, Input } from "semantic-ui-react";
+import FontAwesomeIcon from "@fortawesome/react-fontawesome";
+import { faPlus, faSearch } from "@fortawesome/fontawesome-pro-light";
+import { NavLink } from "react-router-dom";
+import { connect } from "react-redux";
+import { filterByMask } from "../../actions";
 
 class Nav extends Component {
   render() {
@@ -27,7 +29,11 @@ class Nav extends Component {
         <Menu.Item>
           <Input
             transparent
-            icon="search"
+            icon={
+              <Icon fitted>
+                <FontAwesomeIcon icon={faSearch} />
+              </Icon>
+            }
             iconPosition="left"
             placeholder="Filter by name or #tag..."
             value={mask}
@@ -36,7 +42,9 @@ class Nav extends Component {
         </Menu.Item>
         <Menu.Menu position="right">
           <Menu.Item as={NavLink} to="/add">
-            <Icon name="plus" />Add new recipe...
+            <Icon fitted>
+              <FontAwesomeIcon icon={faPlus} />
+            </Icon>Add new recipe...
           </Menu.Item>
         </Menu.Menu>
       </Menu>

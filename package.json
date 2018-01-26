@@ -11,6 +11,12 @@
     "source-map-explorer": "1.5.0"
   },
   "dependencies": {
+    "@fortawesome/fontawesome": "1.1.3",
+    "@fortawesome/fontawesome-free-brands": "5.0.6",
+    "@fortawesome/fontawesome-free-solid": "5.0.6",
+    "@fortawesome/fontawesome-pro-light": "5.0.6",
+    "@fortawesome/fontawesome-pro-solid": "5.0.6",
+    "@fortawesome/react-fontawesome": "0.0.17",
     "classnames": "2.2.5",
     "lato-font": "3.0.0",
     "moment": "2.20.1",

@@ -1,10 +1,10 @@
-import moment from 'moment';
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router';
-import { Link } from 'react-router-dom';
-import * as actions from '../actions';
-import { getRecipe } from '../reducers';
+import moment from "moment";
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { withRouter } from "react-router";
+import { Link } from "react-router-dom";
+import * as actions from "../actions";
+import { getRecipe } from "../reducers";
 import {
   Container,
   Segment,
@@ -16,8 +16,14 @@ import {
   Header,
   List,
   Divider,
-  Grid,
-} from 'semantic-ui-react';
+  Grid
+} from "semantic-ui-react";
+import FontAwesomeIcon from "@fortawesome/react-fontawesome";
+import { faStar, faUtensilsAlt, faHome, faPencilAlt } from "@fortawesome/fontawesome-pro-light";
+import {
+  faStar as faStarSolid,
+  faUtensilsAlt as faUtensilsAltSolid
+} from "@fortawesome/fontawesome-pro-solid";
 
 class Recipe extends Component {
   fetchData() {
@@ -47,24 +53,28 @@ class Recipe extends Component {
       cooked,
       favorite,
       timestamp,
-      versions,
+      versions
     } = recipe;
     return (
       <Container text>
         <Segment basic padded>
           <Menu text>
             <Menu.Item as={Link} to="/">
-              <Icon name="home" />Home
+              <Icon fitted>
+                <FontAwesomeIcon icon={faHome} />
+              </Icon>Home
             </Menu.Item>
             <Menu.Menu position="right">
               <Menu.Item>
                 <Popup
                   trigger={
                     <a
-                      style={{ color: favorite ? '#FFB70A' : 'grey' }}
+                      style={{ color: favorite ? "#FFB70A" : "inherit" }}
                       onClick={() => toggleFavorite(id)}
                     >
-                      <Icon name="star" fitted />
+                      <Icon fitted>
+                        <FontAwesomeIcon icon={favorite ? faStarSolid : faStar} />
+                      </Icon>
                     </a>
                   }
                   position="top center"
@@ -78,10 +88,12 @@ class Recipe extends Component {
                 <Popup
                   trigger={
                     <a
-                      style={{ color: cooked ? 'black' : 'grey' }}
+                      style={{ color: cooked ? "#95A5A6" : "inherit" }}
                       onClick={() => toggleCooked(id)}
                     >
-                      <Icon name="spoon" fitted />
+                      <Icon fitted>
+                        <FontAwesomeIcon icon={cooked ? faUtensilsAltSolid : faUtensilsAlt} />
+                      </Icon>
                     </a>
                   }
                   position="top center"
@@ -95,7 +107,7 @@ class Recipe extends Component {
                 <Menu.Item>
                   <Popup
                     trigger={
-                      <a className="left floated" style={{ fontWeight: '800' }}>
+                      <a className="left floated" style={{ fontWeight: "800" }}>
                         &times;{versions.length + 1}
                       </a>
                     }
@@ -104,7 +116,9 @@ class Recipe extends Component {
                     size="tiny"
                   >
                     <Popup.Content>
-                      This recipe has {versions.length + 1} version{versions.length + 1 > 1 ? 's' : ''}
+                      This recipe has {versions.length + 1} version{versions.length + 1 > 1
+                        ? "s"
+                        : ""}
                     </Popup.Content>
                   </Popup>
                 </Menu.Item>
@@ -117,7 +131,7 @@ class Recipe extends Component {
                   size="tiny"
                 >
                   <Popup.Content>
-                    {moment.unix(timestamp).format('dddd, MMMM Do YYYY, HH:mm:ss')}
+                    {moment.unix(timestamp).format("dddd, MMMM Do YYYY, HH:mm:ss")}
                   </Popup.Content>
                 </Popup>
               </Menu.Item>
@@ -133,7 +147,7 @@ class Recipe extends Component {
               {title}
               <Header.Subheader>{description}</Header.Subheader>
             </Header>
-            <List horizontal link style={{ fontWeight: '700' }}>
+            <List horizontal link style={{ fontWeight: "700" }}>
               {tags.map((t, tx) => (
                 <List.Item key={tx}>
                   <List.Content>#{t}</List.Content>
@@ -162,8 +176,10 @@ class Recipe extends Component {
           </Segment>
           <Menu text>
             <Menu.Menu position="right">
-              <Menu.Item as={Link} to={'/' + id + '/edit'}>
-                <Icon name="write" />Edit
+              <Menu.Item as={Link} to={"/" + id + "/edit"}>
+                <Icon>
+                  <FontAwesomeIcon icon={faPencilAlt} />
+                </Icon>Edit
               </Menu.Item>
             </Menu.Menu>
           </Menu>
@@ -178,7 +194,7 @@ export default withRouter(
     const { id } = router.match.params;
     return {
       recipe: getRecipe(state, id),
-      id,
+      id
     };
   }, actions)(Recipe)
 );

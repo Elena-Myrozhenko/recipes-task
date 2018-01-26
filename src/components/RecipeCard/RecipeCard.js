@@ -1,8 +1,19 @@
-import moment from 'moment';
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
-import { Card, Popup, Image, Icon, List, Accordion } from 'semantic-ui-react';
+import moment from "moment";
+import React from "react";
+import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
+import { Card, Popup, Image, Icon, List, Accordion } from "semantic-ui-react";
+import FontAwesomeIcon from "@fortawesome/react-fontawesome";
+import {
+  faStar,
+  faUtensilsAlt,
+  faShoppingBasket,
+  faListUl
+} from "@fortawesome/fontawesome-pro-light";
+import {
+  faStar as faStarSolid,
+  faUtensilsAlt as faUtensilsAltSolid
+} from "@fortawesome/fontawesome-pro-solid";
 
 const RecipeCard = ({
   onStarClick,
@@ -12,25 +23,22 @@ const RecipeCard = ({
   title,
   description,
   photo,
-  video,
   ingredients,
   directions,
   tags,
   cooked,
   favorite,
   timestamp,
-  versions,
+  versions
 }) => (
   <Card fluid>
     <Card.Content extra>
       <span className="left floated">
         <Popup
           trigger={
-            <Icon
-              name="star"
-              style={{ color: favorite ? '#FFB70A' : 'inherit' }}
-              onClick={onStarClick}
-            />
+            <Icon style={{ color: favorite ? "#FFB70A" : "inherit" }} onClick={onStarClick}>
+              <FontAwesomeIcon icon={favorite ? faStarSolid : faStar} />
+            </Icon>
           }
           position="top center"
           inverted
@@ -40,11 +48,9 @@ const RecipeCard = ({
         </Popup>
         <Popup
           trigger={
-            <Icon
-              name="spoon"
-              style={{ color: cooked ? 'black' : 'inherit' }}
-              onClick={onCutleryClick}
-            />
+            <Icon style={{ color: cooked ? "#95A5A6" : "inherit" }} onClick={onCutleryClick}>
+              <FontAwesomeIcon icon={cooked ? faUtensilsAltSolid : faUtensilsAlt} />
+            </Icon>
           }
           position="top center"
           inverted
@@ -52,29 +58,15 @@ const RecipeCard = ({
         >
           <Popup.Content>Mark this recipe as cooked</Popup.Content>
         </Popup>
-        {video ? (
-          <Popup
-            trigger={
-              <Link to={'/' + id}>
-                <Icon name="video" />
-              </Link>
-            }
-            position="top center"
-            inverted
-            size="tiny"
-          >
-            <Popup.Content>Wow, video in this recipe! Much amaze!</Popup.Content>
-          </Popup>
-        ) : null}
         {versions.length > 0 ? (
           <Popup
-            trigger={<a style={{ fontWeight: '800' }}>&times;{versions.length + 1}</a>}
+            trigger={<a style={{ fontWeight: "800" }}>&times;{versions.length + 1}</a>}
             position="top center"
             inverted
             size="tiny"
           >
             <Popup.Content>
-              This recipe has {versions.length + 1} version{versions.length + 1 > 1 ? 's' : ''}
+              This recipe has {versions.length + 1} version{versions.length + 1 > 1 ? "s" : ""}
             </Popup.Content>
           </Popup>
         ) : null}
@@ -87,24 +79,24 @@ const RecipeCard = ({
           size="tiny"
         >
           <Popup.Content>
-            {moment.unix(timestamp).format('dddd, MMMM Do YYYY, HH:mm:ss')}
+            {moment.unix(timestamp).format("dddd, MMMM Do YYYY, HH:mm:ss")}
           </Popup.Content>
         </Popup>
       </span>
     </Card.Content>
     {photo ? (
-      <Link to={'/' + id}>
+      <Link to={"/" + id}>
         <Image src={photo} alt={title} fluid />
       </Link>
     ) : null}
     <Card.Content>
-      <Link to={'/' + id} className="header" style={{ fontWeight: '900' }}>
+      <Link to={"/" + id} className="header" style={{ fontWeight: "900" }}>
         {title}
       </Link>
       <Card.Meta>
-        <List horizontal link style={{ fontWeight: '700' }}>
+        <List horizontal link style={{ fontWeight: "700" }}>
           {tags.map((t, tx) => (
-            <List.Item key={tx} onClick={onTagClick.bind(null, '#' + t)}>
+            <List.Item key={tx} onClick={onTagClick.bind(null, "#" + t)}>
               <List.Content>
                 <a>#{t}</a>
               </List.Content>
@@ -122,34 +114,38 @@ const RecipeCard = ({
               title: {
                 content: (
                   <span>
-                    <Icon name="shopping basket" />Ingredients <small>({ingredients.length})</small>
+                    <Icon>
+                      <FontAwesomeIcon icon={faShoppingBasket} />
+                    </Icon>Ingredients <small>({ingredients.length})</small>
                   </span>
-                ),
+                )
               },
               content: {
                 content: ingredients.length > 0 && (
                   <List bulleted>
                     {ingredients.map((i, ix) => <List.Item key={ix}>{i}</List.Item>)}
                   </List>
-                ),
-              },
+                )
+              }
             },
             {
               title: {
                 content: (
                   <span>
-                    <Icon name="ordered list" />Directions <small>({directions.length})</small>
+                    <Icon>
+                      <FontAwesomeIcon icon={faListUl} />
+                    </Icon>Directions <small>({directions.length})</small>
                   </span>
-                ),
+                )
               },
               content: {
                 content: directions.length > 0 && (
                   <List ordered>
                     {directions.map((d, dx) => <List.Item key={dx}>{d}</List.Item>)}
                   </List>
-                ),
-              },
-            },
+                )
+              }
+            }
           ]}
         />
       </Card.Content>
@@ -172,7 +168,7 @@ RecipeCard.propTypes = {
   cooked: PropTypes.bool.isRequired,
   favorite: PropTypes.bool.isRequired,
   timestamp: PropTypes.number.isRequired,
-  versions: PropTypes.array.isRequired,
+  versions: PropTypes.array.isRequired
 };
 
 export default RecipeCard;

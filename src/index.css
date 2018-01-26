@@ -18,3 +18,4 @@
 .ui.multiple.search.selection.dropdown > .menu > .message { white-space: normal; }
 .ui.accordion .accordion .title .dropdown.icon,
 .ui.accordion .title .dropdown.icon { margin-left: -5px; }
+.ui.icon.input .icon { display: flex; align-items: center; justify-content: center; }

@@ -1,5 +1,7 @@
-import React from 'react';
-import { Container, Grid, Segment, List, Icon } from 'semantic-ui-react';
+import React from "react";
+import { Container, Grid, Segment, List, Icon } from "semantic-ui-react";
+import FontAwesomeIcon from "@fortawesome/react-fontawesome";
+import { faQuestionCircle } from "@fortawesome/fontawesome-free-solid";
 
 export default () => (
   <Container fluid className="basic inverted segment">
@@ -8,17 +10,19 @@ export default () => (
         <Grid.Row>
           <Grid.Column width={1}>
             <Segment basic inverted>
-              <Icon name="help circle" />
+              <Icon fitted>
+                <FontAwesomeIcon fixedWidth icon={faQuestionCircle} />
+              </Icon>
             </Segment>
           </Grid.Column>
           <Grid.Column>
             <Segment basic inverted>
               <small>
                 <p>
-                  A{' '}
+                  A{" "}
                   <a href="https://en.wikipedia.org/wiki/Recipe">
                     <strong>recipe</strong>
-                  </a>{' '}
+                  </a>{" "}
                   is a set of instructions that describes how to prepare or make something,
                   especially a culinary dish.
                   <br />Modern culinary recipes normally consist of several components:
@@ -62,10 +66,10 @@ export default () => (
             <Segment basic inverted>
               <small>
                 <p>
-                  A{' '}
+                  A{" "}
                   <a href="https://en.wikipedia.org/wiki/Cookbook">
                     <strong>cookbook</strong>
-                  </a>{' '}
+                  </a>{" "}
                   (sometimes <em>cookery book</em> in Commonwealth English or <em>cook book</em>) is
                   a kitchen reference publication that typically contains a collection of recipes.
                   <br />Modern versions may also include colorful illustrations and advice on
