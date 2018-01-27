@@ -1,3 +1,5 @@
+import * as constants from "../constants";
+
 const byId = (state = {}, action) => {
   if (action.response) {
     return {
@@ -5,7 +7,7 @@ const byId = (state = {}, action) => {
       ...action.response.entities.recipes
     };
   }
-  if (action.type === 'DELETE_RECIPE_SUCCESS') {
+  if (action.type === constants.DELETE_RECIPE_SUCCESS) {
     const nextState = { ...state };
     delete nextState[action.id];
     return nextState;

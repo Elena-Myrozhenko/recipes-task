@@ -1,6 +1,8 @@
-const mask = (state = '', action) => {
+import * as constants from "../constants";
+
+const mask = (state = "", action) => {
   switch (action.type) {
-    case 'SET_FILTER_MASK_SUCCESS':
+    case constants.SET_FILTER_MASK_SUCCESS:
       return action.mask;
     default:
       return state;
