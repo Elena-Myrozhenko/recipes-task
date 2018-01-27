@@ -4,7 +4,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
 import { Link } from "react-router-dom";
-import * as actions from "../../actions";
+import { fetchRecipe, addRecipe, deleteRecipe } from "../../actions";
 import { getRecipe } from "../../reducers";
 import {
   Container,
@@ -269,6 +269,6 @@ export default withRouter(
         tags: []
       }
     }),
-    actions
+    { fetchRecipe, addRecipe, deleteRecipe }
   )(Recipe)
 );

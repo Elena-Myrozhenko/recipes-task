@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
 import { Link } from "react-router-dom";
-import * as actions from "../../actions";
+import { fetchRecipe, toggleFavorite, toggleCooked } from "../../actions";
 import { getRecipe } from "../../reducers";
 import {
   Container,
@@ -192,11 +192,14 @@ class Recipe extends Component {
 }
 
 export default withRouter(
-  connect((state, router) => {
-    const { id } = router.match.params;
-    return {
-      recipe: getRecipe(state, id),
-      id
-    };
-  }, actions)(Recipe)
+  connect(
+    (state, router) => {
+      const { id } = router.match.params;
+      return {
+        recipe: getRecipe(state, id),
+        id
+      };
+    },
+    { fetchRecipe, toggleFavorite, toggleCooked }
+  )(Recipe)
 );
