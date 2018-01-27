@@ -1,22 +1,22 @@
-import { createStore, applyMiddleware, compose } from 'redux';
-import { createLogger } from 'redux-logger';
-import { persistStore, persistReducer } from 'redux-persist';
-import localStorage from 'redux-persist/lib/storage';
-import createSagaMiddleware from 'redux-saga';
-import thunk from 'redux-thunk';
-import recipes from '../reducers';
-import sagas from '../sagas';
+import { createStore, applyMiddleware, compose } from "redux";
+import { createLogger } from "redux-logger";
+import { persistStore, persistReducer } from "redux-persist";
+import localStorage from "redux-persist/lib/storage";
+import createSagaMiddleware from "redux-saga";
+import thunk from "redux-thunk";
+import recipes from "../reducers";
+import sagas from "../sagas";
 
 const sagaMiddleware = createSagaMiddleware();
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-export default function configureStore(initialState) {
+export default initialState => {
   const store = createStore(
     persistReducer(
       {
-        key: 'pomodoro',
-        keyPrefix: '',
-        storage: localStorage,
+        key: "pomodoro",
+        keyPrefix: "",
+        storage: localStorage
       },
       recipes
     ),
@@ -28,8 +28,8 @@ export default function configureStore(initialState) {
           sagaMiddleware,
           createLogger({
             collapsed: true,
-            duration: true,
-          }),
+            duration: true
+          })
         ]
       )
     )
@@ -37,4 +37,4 @@ export default function configureStore(initialState) {
   const persistor = persistStore(store);
   sagaMiddleware.run(sagas);
   return { persistor, store };
-}
+};
