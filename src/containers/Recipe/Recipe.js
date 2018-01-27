@@ -3,8 +3,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
 import { Link } from "react-router-dom";
-import * as actions from "../actions";
-import { getRecipe } from "../reducers";
+import * as actions from "../../actions";
+import { getRecipe } from "../../reducers";
 import {
   Container,
   Segment,
@@ -30,18 +30,20 @@ class Recipe extends Component {
     const { id, fetchRecipe } = this.props;
     fetchRecipe(id);
   }
+
   componentDidMount() {
     this.fetchData();
   }
+
   componentDidUpdate(prevProps) {
     if (this.props.id !== prevProps.id) {
       this.fetchData();
     }
   }
+
   render() {
     const { id, recipe, toggleFavorite, toggleCooked } = this.props;
     if (recipe === undefined) return null; // dirty: check for isFetching properly
-
     const {
       title,
       description,

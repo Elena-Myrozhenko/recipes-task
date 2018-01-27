@@ -3,6 +3,7 @@
  * Looks so-so — saves space, sure, but breaks rhythm, why.
  * Can't tell, maybe release this as a view option.
  */
+ 
 .masonry.grid {
 	display: block;
 }
@@ -27,3 +28,6 @@
 		column-count: 3;
 	}
 }
+
+.ui.header.error-message { font-weight: 900; margin: 3em auto; }
+.ui.header.error-message a { cursor: pointer; }

@@ -36,7 +36,10 @@ const RecipeCard = ({
       <span className="left floated">
         <Popup
           trigger={
-            <Icon style={{ color: favorite ? "#FFB70A" : "inherit" }} onClick={onStarClick}>
+            <Icon
+              style={{ color: favorite ? "#FFB70A" : "inherit", cursor: "pointer" }}
+              onClick={onStarClick}
+            >
               <FontAwesomeIcon icon={favorite ? faStarSolid : faStar} />
             </Icon>
           }
@@ -48,7 +51,10 @@ const RecipeCard = ({
         </Popup>
         <Popup
           trigger={
-            <Icon style={{ color: cooked ? "#95A5A6" : "inherit" }} onClick={onCutleryClick}>
+            <Icon
+              style={{ color: cooked ? "#95A5A6" : "inherit", cursor: "pointer" }}
+              onClick={onCutleryClick}
+            >
               <FontAwesomeIcon icon={cooked ? faUtensilsAltSolid : faUtensilsAlt} />
             </Icon>
           }

@@ -4,8 +4,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
 import { Link } from "react-router-dom";
-import * as actions from "../actions";
-import { getRecipe } from "../reducers";
+import * as actions from "../../actions";
+import { getRecipe } from "../../reducers";
 import {
   Container,
   Segment,
@@ -28,10 +28,12 @@ class Recipe extends Component {
       recipe: props.recipe
     };
   }
+
   fetchData() {
     const { recipe: { id }, fetchRecipe } = this.props;
     fetchRecipe(id);
   }
+
   componentDidMount() {
     const { recipe } = this.props;
     if (recipe && Array.isArray(recipe.tags)) {
@@ -45,11 +47,13 @@ class Recipe extends Component {
     }
     this.fetchData();
   }
+
   componentDidUpdate(prevProps) {
     if (this.props.recipe.id !== prevProps.recipe.id) {
       this.fetchData();
     }
   }
+
   handleSubmit = event => {
     event.preventDefault();
     const {
@@ -74,6 +78,7 @@ class Recipe extends Component {
       tags: tags.map(t => t.replace("#", "")) // store tags as plain strings without hashes
     });
   };
+
   handleTagsAddition = (event, { value }) => {
     value = (value.startsWith("#") ? value : "#" + value).replace(/ /g, "");
     this.setState({
@@ -83,6 +88,7 @@ class Recipe extends Component {
       ]
     });
   };
+
   handleTagsChange = (event, { value }) => {
     const { recipe } = this.state;
     this.setState({
@@ -93,6 +99,7 @@ class Recipe extends Component {
       }
     });
   };
+
   handleTagsKeyDown = event => {
     if (event.which === 32) {
       event.preventDefault();
@@ -105,6 +112,7 @@ class Recipe extends Component {
       }
     }
   };
+
   render() {
     const { deleteRecipe } = this.props;
     const { recipe, tagsOptions } = this.state;
