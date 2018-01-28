@@ -49,7 +49,6 @@ class Recipes extends Component {
             </Header>
           ) : (
             <RecipeCards
-              isFetching={isFetching}
               recipes={recipes}
               toggleCooked={toggleCooked}
               toggleFavorite={toggleFavorite}

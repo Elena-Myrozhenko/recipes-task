@@ -18,6 +18,7 @@
     "@fortawesome/fontawesome-pro-solid": "5.0.6",
     "@fortawesome/react-fontawesome": "0.0.17",
     "classnames": "2.2.5",
+    "formik": "0.10.5",
     "lato-font": "3.0.0",
     "moment": "2.20.1",
     "normalizr": "3.2.4",

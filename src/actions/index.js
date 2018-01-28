@@ -3,7 +3,7 @@ import { normalize } from "normalizr";
 import * as schema from "./schema";
 import * as api from "../api";
 import { getIsFetching } from "../reducers";
-import { history } from "../index";
+// import { history } from "../index";
 
 export const fetchRecipes = filter => (dispatch, getState) => {
   if (getIsFetching(getState(), filter)) {
@@ -63,7 +63,7 @@ export const addRecipe = (id, recipe) => dispatch => {
       type: constants.ADD_RECIPE_SUCCESS,
       response: normalize(response, schema.recipe)
     });
-    history.goBack();
+    // history.goBack();
   });
 };
 

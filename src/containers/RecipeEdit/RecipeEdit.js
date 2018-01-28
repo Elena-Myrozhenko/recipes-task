@@ -6,20 +6,12 @@ import { withRouter } from "react-router";
 import { Link } from "react-router-dom";
 import { fetchRecipe, addRecipe, deleteRecipe } from "../../actions";
 import { getRecipe } from "../../reducers";
-import {
-  Container,
-  Segment,
-  Icon,
-  Embed,
-  Image,
-  Form,
-  Input,
-  Dropdown,
-  Menu,
-  Button
-} from "semantic-ui-react";
+import { Container, Segment, Icon, Embed, Image, Form, Menu, Button } from "semantic-ui-react";
 import FontAwesomeIcon from "@fortawesome/react-fontawesome";
 import { faCamera, faVideo, faTimes, faTrashAlt, faSave } from "@fortawesome/fontawesome-pro-light";
+import { Formik, Field } from "formik";
+import RecipeTextEditor from "../../components/RecipeTextEditor/RecipeTextEditor";
+import RecipeTagsEditor from "../../components/RecipeTagsEditor/RecipeTagsEditor";
 
 class Recipe extends Component {
   constructor(props) {
@@ -35,16 +27,6 @@ class Recipe extends Component {
   }
 
   componentDidMount() {
-    const { recipe } = this.props;
-    if (recipe && Array.isArray(recipe.tags)) {
-      this.setState({
-        recipe: {
-          ...recipe,
-          tags: [...recipe.tags.map(t => "#" + t)]
-        },
-        tagsOptions: [...recipe.tags.map(t => ({ text: "#" + t, value: "#" + t }))]
-      });
-    }
     this.fetchData();
   }
 
@@ -54,69 +36,19 @@ class Recipe extends Component {
     }
   }
 
-  handleSubmit = event => {
-    event.preventDefault();
-    const {
-      recipe: {
-        id,
-        title = "",
-        description = "",
-        photo = "",
-        video = "",
-        ingredients = [],
-        directions = [],
-        tags = []
-      }
-    } = this.state;
-    this.props.addRecipe(id, {
-      title: startCase(toLower(title.trim())), // Switch Case To Title Case
-      description: description.trim(),
-      photo: photo.trim(),
-      video: video.trim(),
-      ingredients: ingredients.filter(Boolean),
-      directions: directions.filter(Boolean),
-      tags: tags.map(t => t.replace("#", "")) // store tags as plain strings without hashes
-    });
-  };
-
-  handleTagsAddition = (event, { value }) => {
-    value = (value.startsWith("#") ? value : "#" + value).replace(/ /g, "");
-    this.setState({
-      tagsOptions: [
-        ...this.state.tagsOptions.filter(t => t.value !== value),
-        { text: value, value }
-      ]
-    });
-  };
-
-  handleTagsChange = (event, { value }) => {
-    const { recipe } = this.state;
-    this.setState({
-      recipe: {
-        ...recipe,
-        // always convert last item to a #hashtag, merge with the original array and deduplicate it
-        tags: [...new Set(value.concat(("#" + value.pop()).replace("##", "#").replace(/ /g, "")))]
-      }
-    });
-  };
-
-  handleTagsKeyDown = event => {
-    if (event.which === 32) {
-      event.preventDefault();
-      // don't even try to add an empty tag
-      if (event.target.value.trim() !== "") {
-        this.handleTagsAddition(event, { value: event.target.value });
-        this.handleTagsChange(event, {
-          value: [...this.state.recipe.tags, event.target.value]
-        });
-      }
-    }
-  };
-
   render() {
     const { deleteRecipe } = this.props;
-    const { recipe, tagsOptions } = this.state;
-    const { id, title, description, tags, photo, video, ingredients, directions } = recipe;
+    const { recipe } = this.state;
+    const {
+      id,
+      title = "",
+      description = "",
+      tags = [],
+      photo = "",
+      video = "",
+      ingredients = [],
+      directions = []
+    } = recipe;
     return (
       <Container text>
         <Segment basic padded>
@@ -126,128 +58,158 @@ class Recipe extends Component {
             <Image src={photo} shape="rounded" centered fluid alt={title} />
           )}
           <Segment basic vertical>
-            <Form onSubmit={this.handleSubmit}>
-              <Form.Field
-                name="title"
-                size="huge"
-                style={{ fontWeight: 900 }}
-                control={Input}
-                type="text"
-                placeholder="e.g. Spaghetti With Tomato And Walnut Pesto"
-                value={title}
-                onChange={(event, { value }) =>
-                  this.setState({ recipe: { ...recipe, title: value } })
-                }
-              />
-              <Form.TextArea
-                name="description"
-                placeholder="e.g. Basil is a mere garnish in this nutty, cheesy, peak-season pesto sauce."
-                rows="3"
-                value={description}
-                onChange={(event, { value }) =>
-                  this.setState({ recipe: { ...recipe, description: value } })
-                }
-              />
-              <Form.Field
-                name="tags"
-                control={Dropdown}
-                type="text"
-                icon="dropdown"
-                placeholder="e.g. #tomatoes #bake #15min"
-                fluid
-                multiple
-                search
-                scrolling
-                selection
-                allowAdditions
-                noResultsMessage="Type new #hashtag and press Enter (or use Space to automagically create tags as you type)."
-                options={tagsOptions}
-                value={tags}
-                onAddItem={this.handleTagsAddition}
-                onChange={this.handleTagsChange}
-                onKeyDown={this.handleTagsKeyDown}
-              />
-              <Form.Group widths="equal">
-                <Form.Field
-                  name="photo"
-                  control={Input}
-                  type="text"
-                  icon={
-                    <Icon fitted>
-                      <FontAwesomeIcon fixedWidth icon={faCamera} />
-                    </Icon>
-                  }
-                  iconPosition="left"
-                  placeholder="e.g. https://rcps.com/photos/577d247f.jpg"
-                  value={photo}
-                  onChange={(event, { value }) =>
-                    this.setState({ recipe: { ...recipe, photo: value } })
-                  }
-                />
-                <Form.Field
-                  name="video"
-                  control={Input}
-                  type="text"
-                  icon={
-                    <Icon fitted>
-                      <FontAwesomeIcon fixedWidth icon={faVideo} />
-                    </Icon>
-                  }
-                  iconPosition="left"
-                  placeholder="e.g. https://rcps.com/videos/4f2c1eb1.mp4"
-                  value={video}
-                  onChange={(event, { value }) =>
-                    this.setState({ recipe: { ...recipe, video: value } })
-                  }
-                />
-              </Form.Group>
-              <Form.Group widths="equal">
-                <Form.TextArea
-                  name="ingredients"
-                  label="Ingredients"
-                  placeholder="e.g. 3 tablespoons olive oil..."
-                  rows="6"
-                  value={ingredients.join("\n")}
-                  onChange={(event, { value }) =>
-                    this.setState({ recipe: { ...recipe, ingredients: value.split("\n") } })
-                  }
-                />
-                <Form.TextArea
-                  name="directions"
-                  label="Directions"
-                  placeholder="e.g. Preheat oven to 400°F..."
-                  rows="6"
-                  value={directions.join("\n")}
-                  onChange={(event, { value }) =>
-                    this.setState({ recipe: { ...recipe, directions: value.split("\n") } })
-                  }
-                />
-              </Form.Group>
-              <Menu text stackable>
-                <Link to={"/" + id} className="item">
-                  <Icon fitted>
-                    <FontAwesomeIcon icon={faTimes} />
-                  </Icon>Cancel
-                </Link>
-                <Link
-                  to="/"
-                  className="item"
-                  style={{ color: "red" }}
-                  onClick={deleteRecipe.bind(null, id)}
-                >
-                  <Icon fitted>
-                    <FontAwesomeIcon icon={faTrashAlt} />
-                  </Icon>Delete recipe
-                </Link>
-                <Menu.Item position="right" className="menu">
-                  <Button type="submit" basic fluid>
-                    <Icon fitted>
-                      <FontAwesomeIcon icon={faSave} />
-                    </Icon>Save as new version
-                  </Button>
-                </Menu.Item>
-              </Menu>
-            </Form>
+            <Formik
+              initialValues={{
+                title,
+                description,
+                tags,
+                photo,
+                video,
+                ingredients: ingredients.join("\n"),
+                directions: directions.join("\n")
+              }}
+              validate={values => {
+                let errors = {};
+                return errors;
+              }}
+              onSubmit={values => {
+                // this.props.addRecipe
+                console.log(id, {
+                  title: startCase(toLower(values.title.trim())), // Switch Case To Title Case
+                  description: values.description.trim(),
+                  photo: values.photo.trim(),
+                  video: values.video.trim(),
+                  ingredients: values.ingredients.split("\n").filter(Boolean),
+                  directions: values.directions.split("\n").filter(Boolean),
+                  tags: values.tags
+                });
+              }}
+              render={({
+                values,
+                errors,
+                touched,
+                handleChange,
+                handleBlur,
+                handleSubmit,
+                isSubmitting
+              }) => (
+                <Form onSubmit={handleSubmit}>
+                  <Form.Field>
+                    <label>Title</label>
+                    <Field
+                      name="title"
+                      style={{ fontWeight: 900 }}
+                      type="text"
+                      placeholder="e.g. Spaghetti With Tomato And Walnut Pesto"
+                      component={RecipeTextEditor}
+                      size="huge"
+                    />
+                  </Form.Field>
+                  <Form.Field>
+                    <label>Description</label>
+                    <Field
+                      name="description"
+                      placeholder="e.g. Basil is a mere garnish in this nutty, cheesy, peak-season pesto sauce."
+                      rows="3"
+                      component={RecipeTextEditor}
+                    />
+                  </Form.Field>
+                  <Form.Field>
+                    <label>Tags</label>
+                    <Field
+                      name="tags"
+                      placeholder="e.g. #tomatoes #bake #15min"
+                      component={RecipeTagsEditor}
+                      type="text"
+                      icon="dropdown"
+                      fluid
+                      multiple
+                      search
+                      scrolling
+                      selection
+                      allowAdditions
+                      noResultsMessage="Type new #hashtag and press Enter (or use Space to automagically create tags as you type)."
+                    />
+                  </Form.Field>
+                  <Form.Group widths="equal">
+                    <Form.Field>
+                      <label>Photo</label>
+                      <Field
+                        name="photo"
+                        type="text"
+                        placeholder="e.g. https://rcps.com/photos/577d247f.jpg"
+                        component={RecipeTextEditor}
+                        icon={
+                          <Icon fitted>
+                            <FontAwesomeIcon fixedWidth icon={faCamera} />
+                          </Icon>
+                        }
+                        iconPosition="left"
+                      />
+                    </Form.Field>
+                    <Form.Field>
+                      <label>Video</label>
+                      <Field
+                        name="video"
+                        type="text"
+                        placeholder="e.g. https://rcps.com/videos/4f2c1eb1.mp4"
+                        component={RecipeTextEditor}
+                        icon={
+                          <Icon fitted>
+                            <FontAwesomeIcon fixedWidth icon={faVideo} />
+                          </Icon>
+                        }
+                        iconPosition="left"
+                      />
+                    </Form.Field>
+                  </Form.Group>
+                  <Form.Group widths="equal">
+                    <Form.Field>
+                      <label>Ingredients</label>
+                      <Field
+                        name="ingredients"
+                        placeholder="e.g. 3 tablespoons olive oil..."
+                        rows="6"
+                        component={RecipeTextEditor}
+                      />
+                    </Form.Field>
+                    <Form.Field>
+                      <label>Directions</label>
+                      <Field
+                        name="directions"
+                        placeholder="e.g. Preheat oven to 400°F..."
+                        rows="6"
+                        component={RecipeTextEditor}
+                      />
+                    </Form.Field>
+                  </Form.Group>
+                  <Menu text stackable>
+                    <Link to={"/" + id} className="item">
+                      <Icon fitted>
+                        <FontAwesomeIcon icon={faTimes} />
+                      </Icon>Cancel
+                    </Link>
+                    <Link
+                      to="/"
+                      className="item"
+                      style={{ color: "red" }}
+                      onClick={deleteRecipe.bind(null, id)}
+                    >
+                      <Icon fitted>
+                        <FontAwesomeIcon icon={faTrashAlt} />
+                      </Icon>Delete recipe
+                    </Link>
+                    <Menu.Item position="right" className="menu">
+                      <Button type="submit" basic fluid>
+                        <Icon fitted>
+                          <FontAwesomeIcon icon={faSave} />
+                        </Icon>Save as new version
+                      </Button>
+                    </Menu.Item>
+                  </Menu>
+                </Form>
+              )}
+            />
           </Segment>
         </Segment>
       </Container>
